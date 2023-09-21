@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@SerializarJson(directorio = "C:\\Users\\geb_b\\Documents\\IntelliJ-WorkSpace\\S1Tasca7\\persona.json")
+@SerializarJson(directorio = "src\\main\\java\\persona.json")
 public class Main {
 
     public static void main(String[] args) {
