@@ -6,27 +6,24 @@ import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class ArrayIndexOutOfBoundsGeneratorTest {
 
     @Test
     public void testElegirProductoExcepcion() {
-        ArrayList<String> productos = new ArrayList<>();
 
-        // Simular la entrada del usuario con un valor inválido (fuera de rango)
-        ByteArrayInputStream in = new ByteArrayInputStream("4".getBytes());
-        Scanner sc = new Scanner(in);
+            ArrayList<String> productos = new ArrayList<>();
 
-        try {
-            // Llamar al método
-            ArrayIndexOutOfBoundsGenerator.elegirProducto(productos, sc);
+            // Simular la entrada del usuario con un valor inválido (fuera de rango)
+            ByteArrayInputStream in = new ByteArrayInputStream("4".getBytes());
+            Scanner sc = new Scanner(in);
 
-            // Si no se arroja la excepción, lanzar un AssertionError
-            throw new AssertionError("Se esperaba una IndexOutOfBoundsException pero no se arrojó.");
-        } catch (IndexOutOfBoundsException e) {
-            // La excepción se ha arrojado correctamente
-        } finally {
-            // Cerrar el Scanner
-            sc.close();
+            // Utilizar assertThrows para verificar que se arroja una IndexOutOfBoundsException
+            assertThrows(IndexOutOfBoundsException.class, () -> {
+                ArrayIndexOutOfBoundsGenerator.elegirProducto(productos, sc);
+            });
+
+            // No es necesario un bloque catch aquí, assertThrows manejará la excepción
         }
-    }
 }
