@@ -8,14 +8,13 @@ import java.util.Scanner;
 
 public class JuegoAdivinarCapitales {
 
-    public static void main(String[] args) throws IOException {
-
-       HashMap<String, String> mapaPaisesCapitales = leerFichero("countries.txt");
-       Map<String, Integer> clasificacion = new HashMap<>();
-       interaccionConUsuario(mapaPaisesCapitales, clasificacion);
-       guardarClasificacion("clasificacion.txt", clasificacion);
-
+    public static void main(String[] args) {
+        HashMap<String, String> mapaPaisesCapitales = leerFichero("countries.txt");
+        Map<String, Integer> clasificacion = new HashMap<>();
+        interaccionConUsuario(mapaPaisesCapitales, clasificacion);
+        guardarClasificacion("clasificacion.txt", clasificacion);
     }
+
     public static void guardarClasificacion(String nombreArchivo, Map<String, Integer> clasificacion) {
 
         try (PrintWriter escritor = new PrintWriter(new FileWriter(nombreArchivo))) {
@@ -27,6 +26,7 @@ public class JuegoAdivinarCapitales {
             System.err.println("Error al guardar la clasificación: " + e.getMessage());
         }
     }
+
     public static void interaccionConUsuario(HashMap<String, String> mapaPaisesCapitales, Map<String, Integer> clasificacion) {
         Scanner sc = new Scanner(System.in);
         Random random = new Random();
@@ -81,9 +81,9 @@ public class JuegoAdivinarCapitales {
         clasificacion.put(nombreUsuario, puntuacion); // Agregar el usuario y su puntuación al Map
 
     }
-    public static HashMap<String, String> leerFichero(String nombreArchivo) throws IOException {
-        HashMap<String, String> mapaPaisesCapitales = new HashMap<>();
 
+    public static HashMap<String, String> leerFichero(String nombreArchivo) {
+        HashMap<String, String> mapaPaisesCapitales = new HashMap<>();
         FileReader lectorArchivo = null;
         BufferedReader lectorLinea = null;
 
@@ -98,13 +98,14 @@ public class JuegoAdivinarCapitales {
                 if (partes.length == 2) {
                     String pais = partes[0].trim();
                     String capital = partes[1].trim();
-                    mapaPaisesCapitales.put(pais, capital); //Agrega al HashMap
+                    mapaPaisesCapitales.put(pais, capital); // Agregar al HashMap
                 }
             }
+        } catch (FileNotFoundException e) {
+            System.err.println("Error: El archivo no se encontró: " + e.getMessage());
         } catch (IOException e) {
-            // Manejar la excepción si ocurre algún problema de lectura del archivo
-            System.out.println("Error: " + e.getMessage());
-            throw e;
+            // Manejar cualquier excepción que pueda ocurrir al cerrar los recursos
+            System.err.println("Error al cerrar el archivo: " + e.getMessage());
         } finally {
             // Cerrar los recursos en el bloque finally
             try {
@@ -112,12 +113,11 @@ public class JuegoAdivinarCapitales {
                     lectorLinea.close();
                 }
                 if (lectorArchivo != null) {
-                    lectorLinea.close();
+                    lectorArchivo.close();
                 }
             } catch (IOException e) {
                 // Manejar cualquier excepción que pueda ocurrir al cerrar los recursos
-                System.out.println("Error: " + e.getMessage());
-                throw e;
+                System.out.println("Error al cerrar el archivo: " + e.getMessage());
             }
         }
         return mapaPaisesCapitales;
