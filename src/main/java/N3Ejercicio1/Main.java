@@ -20,7 +20,6 @@ public class Main {
                 0.0, "La liga", "Barça", "Ferrán Torres",redactor);
         noticias.add(noticiaFutbol);
 
-
         int opcion;
 
         do {
@@ -108,7 +107,6 @@ public class Main {
         }else{
             System.out.println("No se puede ingresar el redactor " + nombre + " porque ya existe en la aplicación");
         }
-
     }
 
     public static Redactor buscarRedactor(String nombre, ArrayList<Redactor> redactores) {
@@ -124,7 +122,6 @@ public class Main {
         }
         return redactor;
     }
-
     public static void eliminarRedactor(ArrayList<Redactor> redactores){
         System.out.println("Introduzca el nombre del redactor que quiere eliminar de la aplicación");
         String nombre = sc.nextLine();
@@ -137,7 +134,6 @@ public class Main {
         } else {
             System.out.println("El redactor " + nombre + " no está en la aplicación");
         }
-
     }
     public static void introducirNoticia(ArrayList<Noticia> noticias, Redactor redactor) {
 
@@ -180,12 +176,12 @@ public class Main {
             String texto = ""; // Establecer el texto como vacío al crear la noticia
 
             // Solicitar los demás atributos específicos de NoticiaFutbol
-            System.out.println("Introduzca la competición");
-            String competicion = sc.nextLine();
-            System.out.println("Introduzca el club");
-            String club = sc.nextLine();
-            System.out.println("Introduzca el jugador");
-            String jugador = sc.nextLine();
+            ArrayList<String> datosFutbol = NoticiaFutbol.obtenerDatosNoticiaFutbol();
+
+            // Obtener los datos del ArrayList
+            String competicion = datosFutbol.get(0);
+            String club = datosFutbol.get(1);
+            String jugador = datosFutbol.get(2);
 
             // Crear la instancia de NoticiaFutbol con el texto vacío
             NoticiaFutbol nuevaNoticiaFutbol = new NoticiaFutbol(titular, texto, 0, 0, competicion, club, jugador, redactor);
@@ -194,7 +190,6 @@ public class Main {
             noticias.add(nuevaNoticiaFutbol);
         } else {
             System.out.println("La noticia ya existe en la aplicación");
-
         }
     }
     public static void introducirNoticiaBaloncesto(ArrayList<Noticia>noticias, Redactor redactor){
@@ -208,11 +203,10 @@ public class Main {
             // La noticia no existe, entonces puedo crear una nueva noticiaBaloncesto
             String texto = ""; // Establecer el texto como vacío al crear la noticia
 
-            // Solicitar los demás atributos específicos de NoticiaBaloncesto
-            System.out.println("Introduzca la competición");
-            String competicion = sc.nextLine();
-            System.out.println("Introduzca el club");
-            String club = sc.nextLine();
+            // Pedir los detalles específicos (competición, club)
+            ArrayList<String> datosBaloncesto = NoticiaBaloncesto.obtenerDatosNoticiaBaloncesto();
+            String competicion = datosBaloncesto.get(0);
+            String club = datosBaloncesto.get(1);
 
             // Crear la instancia de NoticiaBaloncesto con el texto vacío
             NoticiaBaloncesto nuevaNoticiaBaloncesto = new NoticiaBaloncesto(titular, texto, 0, 0, competicion, club, redactor);
@@ -221,7 +215,6 @@ public class Main {
             noticias.add(nuevaNoticiaBaloncesto);
         } else {
             System.out.println("La noticia ya existe en la aplicación");
-
         }
     }
     public static void introducirNoticiaTenis(ArrayList<Noticia>noticias, Redactor redactor){
@@ -236,10 +229,9 @@ public class Main {
             String texto = ""; // Establecer el texto como vacío al crear la noticia
 
             // Solicitar los demás atributos específicos de NoticiaTenis
-            System.out.println("Introduzca la competición");
-            String competicion = sc.nextLine();
-            System.out.println("Introduzca el tenista");
-            String tenista = sc.nextLine();
+            ArrayList<String> datosTenis = NoticiaTenis.obtenerDatosNoticiaTenis();
+            String competicion = datosTenis.get(0);
+            String tenista = datosTenis.get(1);
 
             // Crear la instancia de NoticiaTenis con el texto vacío
             NoticiaTenis nuevaNoticiaTenis = new NoticiaTenis(titular, texto, 0, 0, competicion, tenista, redactor);
@@ -248,7 +240,6 @@ public class Main {
             noticias.add(nuevaNoticiaTenis);
         } else {
             System.out.println("La noticia ya existe en la aplicación");
-
         }
     }
     public static void introducirNoticiaF1(ArrayList<Noticia>noticias, Redactor redactor){
@@ -263,8 +254,8 @@ public class Main {
             String texto = ""; // Establecer el texto como vacío al crear la noticia
 
             // Solicitar los demás atributos específicos de NoticiaF1
-            System.out.println("Introduzca la escuderia");
-            String escuderia = sc.nextLine();
+            ArrayList<String> datosF1 = NoticiaF1.obtenerDatosNoticiaF1();
+            String escuderia = datosF1.get(0);
 
             // Crear la instancia de NoticiaF1 con el texto vacío
             NoticiaF1 nuevaNoticiaF1 = new NoticiaF1(titular, texto, 0, 0, escuderia, redactor);
@@ -273,7 +264,6 @@ public class Main {
             noticias.add(nuevaNoticiaF1);
         } else {
             System.out.println("La noticia ya existe en la aplicación");
-
         }
     }
     public static void introducirNoticiaMotociclismo(ArrayList<Noticia>noticias, Redactor redactor){
@@ -288,8 +278,8 @@ public class Main {
             String texto = ""; // Establecer el texto como vacío al crear la noticia
 
             // Solicitar los demás atributos específicos de NoticiaMotociclismo
-            System.out.println("Introduzca el equipo");
-            String equipo = sc.nextLine();
+            ArrayList<String> datosMotociclismo = NoticiaMotociclismo.obtenerDatosNoticiaMotociclismo();
+            String equipo = datosMotociclismo.get(0);
 
             // Crear la instancia de NoticiaMotociclismo con el texto vacío
             NoticiaMotociclismo nuevaNoticiaMotociclismo = new NoticiaMotociclismo(titular, texto, 0, 0, equipo, redactor);
@@ -298,7 +288,6 @@ public class Main {
             noticias.add(nuevaNoticiaMotociclismo);
         } else {
             System.out.println("La noticia ya existe en la aplicación");
-
         }
     }
     public static Noticia buscarNoticia(String titular, ArrayList<Noticia> noticias){
@@ -394,29 +383,27 @@ public class Main {
         switch (opcionNoticia.toUpperCase()) {
             case "FUTBOL":
                 // Pedir los detalles específicos (competición, club, jugador)
-                System.out.println("Ingrese la competición:");
-                String competicion = sc.nextLine();
-                System.out.println("Ingrese el club:");
-                String club = sc.nextLine();
-                System.out.println("Ingrese el jugador:");
-                String jugador = sc.nextLine();
-
+                ArrayList<String> datosFutbol = NoticiaFutbol.obtenerDatosNoticiaFutbol();
                 String titular = " ";
+
+                // Obtener los datos del ArrayList
+                String competicion = datosFutbol.get(0);
+                String club = datosFutbol.get(1);
+                String jugador = datosFutbol.get(2);
 
                 // Crear la instancia de NoticiaFutbol con los valores recopilados
                 NoticiaFutbol noticiaFutbol = new NoticiaFutbol(titular, "", 0, 0, competicion, club, jugador, redactor);
+
                 // Calcular y mostrar el precio calculado
                 double precioCalculado = noticiaFutbol.calcularPrecioNoticia();
                 System.out.println("El precio calculado de la noticia de fútbol es: " + precioCalculado);
                 break;
             case "BALONCESTO":
                 // Pedir los detalles específicos (competición, club)
-                System.out.println("Ingrese la competición:");
-                competicion = sc.nextLine();
-                System.out.println("Ingrese el club:");
-                club = sc.nextLine();
-
+                ArrayList<String> datosBaloncesto = NoticiaBaloncesto.obtenerDatosNoticiaBaloncesto();
                 titular = " ";
+                competicion = datosBaloncesto.get(0);
+                club = datosBaloncesto.get(1);
 
                 // Crear la instancia de NoticiaBaloncesto con los valores recopilados
                 NoticiaBaloncesto noticiaBaloncesto = new NoticiaBaloncesto(titular, "", 0, 0, competicion, club, redactor);
@@ -427,12 +414,10 @@ public class Main {
 
             case "TENIS":
                 // Pedir los detalles específicos (competición, tenistas)
-                System.out.println("Ingrese la competición:");
-                competicion = sc.nextLine();
-                System.out.println("Ingrese el tenista:");
-                String tenista = sc.nextLine();
-
+                ArrayList<String> datosTenis = NoticiaTenis.obtenerDatosNoticiaTenis();
                 titular = " ";
+                competicion = datosTenis.get(0);
+                String tenista = datosTenis.get(1);
 
                 // Crear la instancia de NoticiaTenis con los valores recopilados
                 NoticiaTenis noticiaTenis = new NoticiaTenis(titular, "", 0, 0, competicion, tenista, redactor);
@@ -442,10 +427,9 @@ public class Main {
                 break;
             case "F1":
                 // Pedir los detalles específicos (escuderías)
-                System.out.println("Ingrese la escudería:");
-                String escuderia = sc.nextLine();
-
+                ArrayList<String> datosF1 = NoticiaF1.obtenerDatosNoticiaF1();
                 titular = " ";
+                String escuderia = datosF1.get(0);
 
                 // Crear la instancia de NoticiaF1 con los valores recopilados
                 NoticiaF1 noticiaF1 = new NoticiaF1(titular, "", 0, 0, escuderia, redactor);
@@ -455,10 +439,9 @@ public class Main {
                 break;
             case "MOTOCICLISMO":
                 // Pedir los detalles específicos (equipos)
-                System.out.println("Ingrese el equipo:");
-                String equipo = sc.nextLine();
-
+                ArrayList<String> datosMotociclismo = NoticiaMotociclismo.obtenerDatosNoticiaMotociclismo();
                 titular = " ";
+                String equipo = datosMotociclismo.get(0);
 
                 // Crear la instancia de NoticiaMotociclismo con los valores recopilados
                 NoticiaMotociclismo noticiaMotociclismo = new NoticiaMotociclismo(titular, "", 0, 0, equipo, redactor);
@@ -480,14 +463,13 @@ public class Main {
             switch (opcionNoticia.toUpperCase()) {
                 case "FUTBOL":
                     // Pedir los detalles específicos (competición, club, jugador)
-                    System.out.println("Ingrese la competición:");
-                    String competicion = sc.nextLine();
-                    System.out.println("Ingrese el club:");
-                    String club = sc.nextLine();
-                    System.out.println("Ingrese el jugador:");
-                    String jugador = sc.nextLine();
-
+                    ArrayList<String> datosFutbol = NoticiaFutbol.obtenerDatosNoticiaFutbol();
                     String titular = " ";
+
+                    // Obtener los datos del ArrayList
+                    String competicion = datosFutbol.get(0);
+                    String club = datosFutbol.get(1);
+                    String jugador = datosFutbol.get(2);
 
                     // Crear la instancia de NoticiaFutbol con los valores recopilados
                     NoticiaFutbol noticiaFutbol = new NoticiaFutbol(titular, "", 0, 0, competicion, club, jugador, redactor);
@@ -497,12 +479,10 @@ public class Main {
                     break;
                 case "BALONCESTO":
                     // Pedir los detalles específicos (competicion, club)
-                    System.out.println("Ingrese la competición:");
-                    competicion = sc.nextLine();
-                    System.out.println("Ingrese el club:");
-                    club = sc.nextLine();
-
+                    ArrayList<String> datosBaloncesto = NoticiaBaloncesto.obtenerDatosNoticiaBaloncesto();
                     titular = " ";
+                    competicion = datosBaloncesto.get(0);
+                    club = datosBaloncesto.get(1);
 
                     // Crear la instancia de NoticiaBaloncesto con los valores recopilados
                     NoticiaBaloncesto noticiaBaloncesto = new NoticiaBaloncesto(titular, "", 0, 0, competicion, club, redactor);
@@ -513,12 +493,10 @@ public class Main {
 
                 case "TENIS":
                     // Pedir los detalles específicos (competición, tenistas)
-                    System.out.println("Ingrese la competición:");
-                    competicion = sc.nextLine();
-                    System.out.println("Ingrese el tenista:");
-                    String tenista = sc.nextLine();
-
+                    ArrayList<String> datosTenis = NoticiaTenis.obtenerDatosNoticiaTenis();
                     titular = " ";
+                    competicion = datosTenis.get(0);
+                    String tenista = datosTenis.get(1);
 
                     // Crear la instancia de NoticiaTenis con los valores recopilados
                     NoticiaTenis noticiaTenis = new NoticiaTenis(titular, "", 0, 0, competicion, tenista, redactor);
@@ -528,10 +506,9 @@ public class Main {
                     break;
                 case "F1":
                     // Pedir los detalles específicos (escuderías)
-                    System.out.println("Ingrese la escudería:");
-                    String escuderia = sc.nextLine();
-
+                    ArrayList<String> datosF1 = NoticiaF1.obtenerDatosNoticiaF1();
                     titular = " ";
+                    String escuderia = datosF1.get(0);
 
                     // Crear la instancia de NoticiaF1 con los valores recopilados
                     NoticiaF1 noticiaF1 = new NoticiaF1(titular, "", 0, 0, escuderia, redactor);
@@ -541,10 +518,9 @@ public class Main {
                     break;
                 case "MOTOCICLISMO":
                     // Pedir los detalles específicos (equipos)
-                    System.out.println("Ingrese el equipo:");
-                    String equipo = sc.nextLine();
-
+                    ArrayList<String> datosMotociclismo = NoticiaMotociclismo.obtenerDatosNoticiaMotociclismo();
                     titular = " ";
+                    String equipo = datosMotociclismo.get(0);
 
                     // Crear la instancia de NoticiaMotociclismo con los valores recopilados
                     NoticiaMotociclismo noticiaMotociclismo = new NoticiaMotociclismo(titular, "", 0, 0, equipo, redactor);
@@ -557,7 +533,6 @@ public class Main {
                     break;
             }
         }
-
 
     public static void eliminarNoticia(ArrayList<Noticia> noticias){
         System.out.println("Introduzca el titular de la noticia que quiere eliminar");

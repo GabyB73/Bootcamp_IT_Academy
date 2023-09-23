@@ -11,28 +11,27 @@ public class NoticiaMotociclismo extends Noticia {
         this.noticias   = new ArrayList<>(); // Inicializar la lista de noticias
     }
     public String getEquipo() {
-
         return equipo;
     }
     public void setEquipo(String equipo) {
-
         this.equipo = equipo;
     }
     public void agregarNoticia(Noticia noticia) {
-
         noticias.add(noticia);
     }
     public ArrayList<Noticia> getNoticias() {
-
         return noticias;
     }
-    @Override
-    public double calcularPrecioNoticia() {
-
+    public static ArrayList<String> obtenerDatosNoticiaMotociclismo() {
         Scanner sc = new Scanner(System.in);
-
-        double precio = 100; // Precio inicial para noticias de F1
-
+        System.out.println("Ingrese el Equipo:");
+        String equipo = sc.nextLine();
+        ArrayList<String> datos = new ArrayList<>();
+        datos.add(equipo);
+        return datos;
+    }
+    private String preguntarEquipo(){
+        Scanner sc = new Scanner(System.in);
         // Realizar la pregunta al usuario sobre los equipos
 
         String opcionEquipo;
@@ -45,40 +44,28 @@ public class NoticiaMotociclismo extends Noticia {
             }
         } while (!opcionEquipo.equalsIgnoreCase("HONDA") && !opcionEquipo.equalsIgnoreCase("YAMAHA")
                 && !opcionEquipo.equalsIgnoreCase("N"));
+        return opcionEquipo;
+    }
+    @Override
+    public double calcularPrecioNoticia() {
+        Scanner sc = new Scanner(System.in);
+        double precio = 100; // Precio inicial para noticias de F1
+        String opcionEquipo = preguntarEquipo();
 
         // Realizar los cálculos basados en las respuestas del usuario
-
         if (opcionEquipo.equalsIgnoreCase("HONDA") || opcionEquipo.equalsIgnoreCase("YAMAHA")) {
             precio += 50;
-
         }
             return precio;
         }
         @Override
         public int calcularPuntuacionNoticia () {
-
         Scanner sc = new Scanner(System.in);
-
         int puntuacion = 3; // Puntuación inicial para noticias de F1
+        String opcionEquipo = preguntarEquipo();
 
-        // Realizar la pregunta al usuario sobre los equipos
-
-        String opcionEquipo;
-            do {
-                System.out.println("¿Es sobre Honda o Yamaha? (HONDA/YAMAHA/N)");
-                opcionEquipo = sc.nextLine();
-                if (!opcionEquipo.equalsIgnoreCase("HONDA") && !opcionEquipo.equalsIgnoreCase("YAMAHA")
-                        &&!opcionEquipo.equalsIgnoreCase("N")) {
-                    System.out.println("Opción inválida. Por favor, elija HONDA, YAMAHA, o N.");
-                }
-            } while (!opcionEquipo.equalsIgnoreCase("HONDA") && !opcionEquipo.equalsIgnoreCase("YAMAHA")
-                    && !opcionEquipo.equalsIgnoreCase("N"));
-
-            // Realizar los cálculos basados en las respuestas del usuario
-
-            if (opcionEquipo.equalsIgnoreCase("HONDA") || opcionEquipo.equalsIgnoreCase("YAMAHA")) {
+        if (opcionEquipo.equalsIgnoreCase("HONDA") || opcionEquipo.equalsIgnoreCase("YAMAHA")) {
             puntuacion += 3;
-
             }
             return puntuacion;
         }
