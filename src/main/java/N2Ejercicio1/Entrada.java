@@ -19,7 +19,7 @@ public class Entrada {
                 dato = sc.nextByte();
                 entradaValida = true; // Si no hay excepción, la entrada es válida
             } catch (InputMismatchException e) {
-                System.out.println("Error de formato. Introduce un byte válido.");
+                System.err.println("Error de formato. Introduce un byte válido." + e.getMessage());
                 sc.nextLine(); // Limpia el búfer del Scanner
             }
         } while (!entradaValida);
@@ -39,7 +39,7 @@ public class Entrada {
                 dato = sc.nextInt();
                 entradaValida = true; // Si no hay excepción, la entrada es válida
             } catch (InputMismatchException e) {
-                System.out.println("Error de formato. Introduce un número entero.");
+                System.err.println("Error de formato. Introduce un número entero." + e.getMessage());
                 sc.nextLine(); // Limpia el búfer del Scanner
             }
         } while (!entradaValida);
@@ -60,7 +60,7 @@ public class Entrada {
                 dato = sc.nextFloat();
                 entradaValida = true; // Si no hay excepción, la entrada es válida
             } catch (InputMismatchException e) {
-                System.out.println("Error de formato. Introduce un número con decimal usando la coma.");
+                System.err.println("Error de formato. Introduce un número con decimal usando la coma." + e.getMessage());
                 sc.nextLine(); // Limpia el búfer del Scanner
             }
         } while (!entradaValida);
@@ -80,7 +80,7 @@ public class Entrada {
                 dato = sc.nextDouble();
                 entradaValida = true; // Si no hay excepción, la entrada es válida
             } catch (InputMismatchException e) {
-                System.out.println("Error de formato. Introduce un número con decimal usando la coma.");
+                System.err.println("Error de formato. Introduce un número con decimal usando la coma." + e.getMessage());
                 sc.nextLine(); // Limpia el búfer del Scanner
             }
         } while (!entradaValida);
@@ -107,7 +107,7 @@ public class Entrada {
                     System.out.println("Error de formato. Introduce un solo carácter.");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Error de formato. Introduce un solo carácter.");
+                System.err.println("Error de formato. Introduce un solo carácter." + e.getMessage());
                 sc.nextLine(); // Limpia el búfer del Scanner
             }
         } while (!entradaValida);
@@ -133,7 +133,7 @@ public class Entrada {
 
                 entradaValida = true; // Si no hay excepción, la entrada es válida
             } catch (Exception e) {
-                System.out.println("Error de formato. Introduce solo letras.");
+                System.err.println("Error de formato. Introduce solo letras." + e.getMessage());
             }
         } while (!entradaValida);
 
