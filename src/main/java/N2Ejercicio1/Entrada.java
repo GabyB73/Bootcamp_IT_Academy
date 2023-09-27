@@ -160,7 +160,7 @@ public class Entrada {
                     System.out.println("Error de formato. Introduce 'S' para SI o 'N' para NO.");
                 }
             } catch (Exception e) {
-                System.out.println("Error de formato. Introduce 'S' para SI o 'N' para NO.");
+                System.err.println("Error de formato. Introduce 'S' para SI o 'N' para NO." + e.getMessage());
                 sc.nextLine(); // Limpia el búfer del Scanner
             }
         } while (!entradaValida);
