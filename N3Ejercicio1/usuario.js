@@ -1,0 +1,4 @@
+
+db.createCollection( 'usuario', {validator: {$jsonSchema: {bsonType: 'object',title:'usuario',required: [         'email',          'contraseña',          'nombre',          'fecha_nacimiento',          'genero',          'pais',          'cod_postal',          'tipo'],properties: {email: {bsonType: 'string'},contraseña: {bsonType: 'string'},nombre: {bsonType: 'string'},fecha_nacimiento: {bsonType: 'date'},genero: {enum: ["Femenino", "Masculino", "No binario", "Género fluido", "Transgénero", "Agénero", "Otros", "Prefiero no decir"]},pais: {bsonType: 'string'},cod_postal: {bsonType: 'string'},tipo: {enum: ["Free", "Premium"]}}         }      },
+autoIndexId:true
+});  
