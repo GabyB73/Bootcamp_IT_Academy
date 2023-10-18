@@ -30,6 +30,17 @@ DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
+-- Table `pizzeria`.`categoria_pizza`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pizzeria`.`categoria_pizza` (
+  `IdCategoria_Pizza` INT NOT NULL AUTO_INCREMENT,
+  `Nombre` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`IdCategoria_Pizza`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
 -- Table `pizzeria`.`cliente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `pizzeria`.`cliente` (
@@ -81,16 +92,11 @@ CREATE TABLE IF NOT EXISTS `pizzeria`.`tienda` (
   `Direccion` VARCHAR(45) NOT NULL,
   `Codigo_postal` VARCHAR(45) NOT NULL,
   `IdLocalidad` INT NOT NULL,
-  `IdProvincia` INT NOT NULL,
   PRIMARY KEY (`IdTienda`),
   INDEX `FK_Localidad_IdLocalidad` (`IdLocalidad` ASC) VISIBLE,
-  INDEX `FK_Provincia_IdProvincia` (`IdProvincia` ASC) VISIBLE,
   CONSTRAINT `FK_Localidad_IdLocalidad`
     FOREIGN KEY (`IdLocalidad`)
-    REFERENCES `pizzeria`.`localidad` (`IdLocalidad`),
-  CONSTRAINT `FK_Provincia_IdProvincia`
-    FOREIGN KEY (`IdProvincia`)
-    REFERENCES `pizzeria`.`provincia` (`IdProvincia`))
+    REFERENCES `pizzeria`.`localidad` (`IdLocalidad`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 5
 DEFAULT CHARACTER SET = utf8mb3;
