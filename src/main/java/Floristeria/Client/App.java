@@ -6,55 +6,70 @@ public class App {
     static Scanner sc = new Scanner(System.in);
 
     public void start() {
-    boolean salir = false;
+        boolean salir = false;
         do {
-        switch (menu()) {
-            case 1:
-                //crearFloristeria();
-                break;
-            case 2:
-                //agregarArbol();
-                break;
-            case 3:
-                //agregarFlor();
-                break;
-            case 4:
-                //agregarDecoracion();
-                break;
-            case 5:
-                //imprimirStock();
-                break;
-            case 6:
-                //retirarArbol();
-                break;
-            case 7:
-                //retirarFlor();
-                break;
-            case 8:
-                //retirarDecoracion();
-                break;
-            case 9:
-                //imprimirStockConCantidades();
-                break;
-            case 10:
-                //imprimirValorTotalFloristeria();
-                break;
-            case 11:
-                //crearTickets();
-                break;
-            case 12:
-                //mostrarListaComprasAntiguas();
-                break;
-            case 13:
-                //visualizarTotalDineroGanado();
-                break;
-            case 0:
-                System.out.println("Gracias por utilizar la aplicación");
-                salir = true;
-                break;
+            switch (menu()) {
+                case 1:
+                    crearFloristeria();
+                    break;
+                case 2:
+                    //agregarArbol();
+                    break;
+                case 3:
+                    //agregarFlor();
+                    break;
+                case 4:
+                    //agregarDecoracion();
+                    break;
+                case 5:
+                    //imprimirStock();
+                    break;
+                case 6:
+                    //retirarArbol();
+                    break;
+                case 7:
+                    //retirarFlor();
+                    break;
+                case 8:
+                    //retirarDecoracion();
+                    break;
+                case 9:
+                    //imprimirStockConCantidades();
+                    break;
+                case 10:
+                    //imprimirValorTotalFloristeria();
+                    break;
+                case 11:
+                    //crearTickets();
+                    break;
+                case 12:
+                    //mostrarListaComprasAntiguas();
+                    break;
+                case 13:
+                    //visualizarTotalDineroGanado();
+                    break;
+                case 0:
+                    System.out.println("Gracias por utilizar la aplicación");
+                    salir = true;
+                    break;
+            }
+        } while (!salir);
+    }
+
+    private Floristeria crearFloristeria() {
+
+        Floristeria floristeria = Floristeria.getInstance();
+
+        if (floristeria.getNombre() == null) {
+            System.out.println("Introduce el nombre de la floristería");
+            String nombre = sc.nextLine();
+            floristeria.setNombre(nombre);
+            System.out.println("Floristería " + "\"" + nombre + "\"" + " creada con éxito");
+        } else {
+            System.out.println("Ya existe una floristería con el nombre " + floristeria.getNombre());
         }
-    } while (!salir);
-}
+        return floristeria;
+    }
 
     private static int menu() {
         byte opcion;
