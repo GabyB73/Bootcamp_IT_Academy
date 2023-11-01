@@ -9,49 +9,23 @@ public class App {
         boolean salir = false;
         do {
             switch (menu()) {
-                case 1:
-                    crearFloristeria();
-                    break;
-                case 2:
-                    //agregarArbol();
-                    break;
-                case 3:
-                    //agregarFlor();
-                    break;
-                case 4:
-                    //agregarDecoracion();
-                    break;
-                case 5:
-                    //imprimirStock();
-                    break;
-                case 6:
-                    //retirarArbol();
-                    break;
-                case 7:
-                    //retirarFlor();
-                    break;
-                case 8:
-                    //retirarDecoracion();
-                    break;
-                case 9:
-                    //imprimirStockConCantidades();
-                    break;
-                case 10:
-                    //imprimirValorTotalFloristeria();
-                    break;
-                case 11:
-                    //crearTickets();
-                    break;
-                case 12:
-                    //mostrarListaComprasAntiguas();
-                    break;
-                case 13:
-                    //visualizarTotalDineroGanado();
-                    break;
-                case 0:
-                    System.out.println("Gracias por utilizar la aplicación");
+                case 1 -> crearFloristeria();
+/*                case 2 -> agregarArbol();
+                case 3 -> agregarFlor();
+                case 4 -> agregarDecoracion();
+                case 5 -> imprimirStock();
+                case 6 -> retirarArbol();
+                case 7 -> retirarFlor();
+                case 8 -> retirarDecoracion();
+                case 9 -> imprimirStockConCantidades();
+                case 10 -> imprimirValorTotalFloristeria();
+                case 11 -> crearTickets();
+                case 12 -> mostrarListaComprasAntiguas();
+                case 13 -> visualizarTotalDineroGanado();
+                case 0 -> cerrarApp();
+                System.out.println("Gracias por utilizar la aplicación");
                     salir = true;
-                    break;
+                    break;*/
             }
         } while (!salir);
     }
@@ -89,7 +63,7 @@ public class App {
             System.out.println("9. Imprimir stock con cantidades.");
             System.out.println("10. Imprimir valor total floristeria."); // Dependency Injection
             System.out.println("11. Crear tickets de compra con múltiples objetos."); // Patron Command
-            System.out.println("12. Mostrar lista de compras antiguas."); // Patron Undo
+            System.out.println("12. Mostrar lista de compras antiguas.");
             System.out.println("13. Visualizar el total de dinero ganado con todas las ventas."); // Patron Observer
             System.out.println("0. Salir de la aplicación.\n");
             opcion = sc.nextByte();
