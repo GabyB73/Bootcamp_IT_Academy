@@ -16,7 +16,8 @@ public class Floristeria {
     private double valorStock;
 
     // Evitar instanciación
-    private Floristeria (){}
+    private Floristeria() {
+    }
 
     public static Floristeria getInstance() {
         if (instance == null) {
@@ -24,9 +25,11 @@ public class Floristeria {
         }
         return instance;
     }
+
     public String getNombre() {
         return nombre;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -37,6 +40,7 @@ public class Floristeria {
 
     public List<Ticket> getTickets() {
         return tickets;
+    }
 
     public double getValorStock() {
         return valorStock;
