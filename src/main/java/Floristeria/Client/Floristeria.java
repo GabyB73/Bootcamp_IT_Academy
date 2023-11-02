@@ -11,7 +11,7 @@ import java.util.List;
 public class Floristeria {
     private static Floristeria instance;
     private String nombre;
-    private static List<Producto> productos = new ArrayList<>();
+    private static List<Producto> stockProductos = new ArrayList<>();
     private static List<Ticket> tickets = new ArrayList<>();
     private double valorStock;
 
@@ -35,7 +35,7 @@ public class Floristeria {
     }
 
     public List<Producto> getProductos() {
-        return productos;
+        return stockProductos;
     }
 
     public List<Ticket> getTickets() {
