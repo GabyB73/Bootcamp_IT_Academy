@@ -1,5 +1,8 @@
 package Floristeria.Client;
 
+import Floristeria.Products.Decoracion;
+import Floristeria.Products.Producto;
+
 import java.util.Scanner;
 
 public class App {
@@ -18,9 +21,9 @@ public class App {
                 case 7 -> retirarFlor();
                 case 8 -> retirarDecoracion();
                 case 9 -> imprimirStockConCantidades();
-                case 10 -> imprimirValorTotalFloristeria();
+                case 10 -> imprimirValorTotalFloristeria();*/
                 case 11 -> crearTickets();
-                case 12 -> mostrarListaComprasAntiguas();
+/*                case 12 -> mostrarListaComprasAntiguas();
                 case 13 -> visualizarTotalDineroGanado();
                 case 0 -> cerrarApp();
                 System.out.println("Gracias por utilizar la aplicación");
@@ -28,6 +31,53 @@ public class App {
                     break;*/
             }
         } while (!salir);
+    }
+
+    private void crearTickets() {
+        Ticket ticket = new Ticket();
+        Producto producto;
+        byte opcion;
+        int i = 1;
+        System.out.println("Ticket creado, añade el " + i + " producto:\n1. Decoracion\n2. Arbol\n3. Flor");
+        opcion = sc.nextByte();
+        sc.nextLine();
+        switch (opcion) {
+            case 1 -> {
+                System.out.println("Introduce el nombre de la decoración");
+                String nombre = sc.nextLine();
+                ticket.getProductos().stream().filter(p -> p.getNombre().equals(nombre)).findFirst().ifPresentOrElse(
+                        p -> {
+                            ticket.addProducto(p);
+                            System.out.println("Decoración: " + nombre + " añadida al ticket");
+                        },
+                        () -> System.out.println("No existe una decoración con ese nombre")
+                );
+            }
+            case 2 -> {
+                System.out.println("Introduce el nombre del árbol");
+                String nombre = sc.nextLine();
+                ticket.getProductos().stream().filter(p -> p.getNombre().equals(nombre)).findFirst().ifPresentOrElse(
+                        p -> {
+                            ticket.addProducto(p);
+                            System.out.println("Árbol: " + nombre + " añadido al ticket");
+                        },
+                        () -> System.out.println("No existe un árbol con ese nombre")
+                );
+            }
+            case 3 -> {
+                System.out.println("Introduce el nombre de la flor");
+                String nombre = sc.nextLine();
+                ticket.getProductos().stream().filter(p -> p.getNombre().equals(nombre)).findFirst().ifPresentOrElse(
+                        p -> {
+                            ticket.addProducto(p);
+                            System.out.println("Flor: " + nombre + " añadida al ticket");
+                        },
+                        () -> System.out.println("No existe una flor con ese nombre")
+                );
+            }
+        }
+
+        System.out.println();
     }
 
     private Floristeria crearFloristeria() {

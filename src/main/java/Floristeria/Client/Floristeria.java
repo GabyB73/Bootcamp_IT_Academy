@@ -12,6 +12,7 @@ public class Floristeria {
     private List<Arbol> StockArboles;
     private List<Flor> StockFlores;
     private List<Decoracion> StockDecoracion;
+    private List<Ticket> tickets;
     private double valorStock;
 
     // Evitar instanciación
