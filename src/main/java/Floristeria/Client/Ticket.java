@@ -1,8 +1,12 @@
 package Floristeria.Client;
 
+import Floristeria.Products.Producto;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Ticket {
-<<<<<<< Updated upstream
-=======
+
     private int id = 0;
     private int nextId = 1;
     private double total;
@@ -31,6 +35,7 @@ public class Ticket {
         productos.add(producto);
     }
 
+
     @Override
     public String toString() {
         return "Ticket{" +
@@ -39,5 +44,5 @@ public class Ticket {
                 ", productos=" + productos +
                 '}';
     }
->>>>>>> Stashed changes
+
 }
