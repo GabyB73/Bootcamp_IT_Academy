@@ -1,14 +1,21 @@
 package Floristeria.Client;
 
+<<<<<<< Updated upstream
+=======
+import Floristeria.Products.Producto;
+
+>>>>>>> Stashed changes
 import java.util.Scanner;
 
 public class App {
     static Scanner sc = new Scanner(System.in);
+    Ticket ticket = new Ticket();
 
     public void start() {
         boolean salir = false;
         do {
             switch (menu()) {
+<<<<<<< Updated upstream
                 case 1:
                     crearFloristeria();
                     break;
@@ -50,12 +57,104 @@ public class App {
                     break;
                 case 0:
                     System.out.println("Gracias por utilizar la aplicación");
+=======
+                case 1 -> crearFloristeria();
+/*                case 2 -> agregarArbol();
+                case 3 -> agregarFlor();
+                case 4 -> agregarDecoracion();
+                case 5 -> imprimirStock();
+                case 6 -> retirarArbol();
+                case 7 -> retirarFlor();
+                case 8 -> retirarDecoracion();
+                case 9 -> imprimirStockConCantidades();
+                case 10 -> imprimirValorTotalFloristeria();*/
+                case 11 -> ticket = crearTickets();
+                case 12 -> mostrarListaComprasAntiguas(ticket);
+                case 13 -> visualizarTotalDineroGanado();
+/*                case 0 -> cerrarApp();
+                System.out.println("Gracias por utilizar la aplicación");
+>>>>>>> Stashed changes
                     salir = true;
                     break;
             }
         } while (!salir);
     }
 
+<<<<<<< Updated upstream
+=======
+    private void visualizarTotalDineroGanado() {
+        double suma = 0;
+        for (int i = 0; i <= ticket.getId(); i++) {
+            suma += Floristeria.getInstance().getTickets().get(i).getTotal();
+        }
+        System.out.println("El total de dinero ganado con todas las ventas es:\n + " + suma + "€");
+    }
+
+    private void mostrarListaComprasAntiguas(Ticket ticket) {
+        System.out.println("Lista de compras antiguas:");
+        for (int i = 0; i <= ticket.getId(); i++) {
+            System.out.println(Floristeria.getInstance().getTickets().get(i));
+        }
+    }
+
+    private Ticket crearTickets() {
+        Ticket ticket = new Ticket();
+        Producto producto;
+        System.out.println("Ticket creado correctamente");
+        boolean salir = false;
+        int i = 1;
+        while (!salir) {
+            byte opcion;
+            System.out.println("Añade el " + i + "º producto:\n1. Decoracion\n2. Arbol\n3. Flor");
+            opcion = sc.nextByte();
+            sc.nextLine();
+            switch (opcion) {
+                case 1 -> {
+                    System.out.println("Introduce el nombre de la decoración");
+                    String nombre = sc.nextLine();
+                    ticket.getProductos().stream().filter(p -> p.getNombre().equals(nombre)).findFirst().ifPresentOrElse(
+                            p -> {
+                                ticket.addProducto(p);
+                                System.out.println("Decoración: " + nombre + " añadida al ticket");
+                            },
+                            () -> System.out.println("No existe una decoración con ese nombre")
+                    );
+                }
+                case 2 -> {
+                    System.out.println("Introduce el nombre del árbol");
+                    String nombre = sc.nextLine();
+                    ticket.getProductos().stream().filter(p -> p.getNombre().equals(nombre)).findFirst().ifPresentOrElse(
+                            p -> {
+                                ticket.addProducto(p);
+                                System.out.println("Árbol: " + nombre + " añadido al ticket");
+                            },
+                            () -> System.out.println("No existe un árbol con ese nombre")
+                    );
+                }
+                case 3 -> {
+                    System.out.println("Introduce el nombre de la flor");
+                    String nombre = sc.nextLine();
+                    ticket.getProductos().stream().filter(p -> p.getNombre().equals(nombre)).findFirst().ifPresentOrElse(
+                            p -> {
+                                ticket.addProducto(p);
+                                System.out.println("Flor: " + nombre + " añadida al ticket");
+                            },
+                            () -> System.out.println("No existe una flor con ese nombre")
+                    );
+                }
+            }
+            Floristeria.getInstance().getTickets().add(ticket);
+            System.out.println("¿Quieres añadir otro producto?\n1. Sí\n2. No");
+            if (sc.nextByte() == 2) {
+                salir = true;
+            }
+            // Corregir (Si no se añade ningún producto, no puede avanzar)
+            i++;
+        }
+        return ticket;
+    }
+
+>>>>>>> Stashed changes
     private Floristeria crearFloristeria() {
 
         Floristeria floristeria = Floristeria.getInstance();
