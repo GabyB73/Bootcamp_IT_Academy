@@ -7,4 +7,11 @@ public abstract class Producto{
     public Producto(String nombre, double precio) {
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
 }
