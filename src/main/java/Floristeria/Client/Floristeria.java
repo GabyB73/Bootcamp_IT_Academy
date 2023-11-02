@@ -5,13 +5,14 @@ import Floristeria.Products.Decoracion;
 import Floristeria.Products.Flor;
 import Floristeria.Products.Producto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Floristeria {
     private static Floristeria instance;
     private String nombre;
-    private List<Producto> stockProductos;
-    private List<Ticket> tickets;
+    private static List<Producto> productos = new ArrayList<>();
+    private static List<Ticket> tickets = new ArrayList<>();
     private double valorStock;
 
     // Evitar instanciación
@@ -29,6 +30,13 @@ public class Floristeria {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
 
     public double getValorStock() {
         return valorStock;

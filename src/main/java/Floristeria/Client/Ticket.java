@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ticket {
+
     private int id = 0;
     private int nextId = 1;
     private double total;
     List<Producto> productos;
-    List<Ticket> tickets;
 
     public Ticket() {
         this.id = nextId++;
@@ -35,7 +35,14 @@ public class Ticket {
         productos.add(producto);
     }
 
-    public List<Ticket> getTickets() {
-        return tickets;
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", total=" + total +
+                ", productos=" + productos +
+                '}';
     }
+
 }
