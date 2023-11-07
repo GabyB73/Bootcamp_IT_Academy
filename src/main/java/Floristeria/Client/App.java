@@ -1,4 +1,7 @@
 package Floristeria.Client;
+import Floristeria.Products.Arbol;
+import Floristeria.Products.Decoracion;
+import Floristeria.Products.Flor;
 import Floristeria.Products.Producto;
 
 
@@ -15,17 +18,17 @@ public class App {
                 case 1 -> crearFloristeria();
 /*                case 2 -> agregarArbol();
                 case 3 -> agregarFlor();
-                case 4 -> agregarDecoracion();
+                case 4 -> agregarDecoracion(); */
                 case 5 -> imprimirStock();
-                case 6 -> retirarArbol();
+/*                case 6 -> retirarArbol();
                 case 7 -> retirarFlor();
-                case 8 -> retirarDecoracion();
+                case 8 -> retirarDecoracion();*/
                 case 9 -> imprimirStockConCantidades();
-                case 10 -> imprimirValorTotalFloristeria();*/
+                case 10 -> imprimirValorTotalFloristeria();
                 case 11 -> ticket = crearTickets();
                 case 12 -> mostrarListaComprasAntiguas(ticket);
                 case 13 -> visualizarTotalDineroGanado();
-/*                case 0 -> cerrarApp();
+/*              case 0 -> cerrarApp();
                 System.out.println("Gracias por utilizar la aplicación");
                     salir = true;
                     break;*/
@@ -44,9 +47,41 @@ public class App {
 
 
     ////////////////// ESPACIO TRABAJO ANA //////////////////
+    // Método para imprimir los productos
+    public void imprimirStock() {
+        System.out.println("Productos en la floristería:");
+        for (Producto producto : Floristeria.getInstance().getProductos()) {
+            System.out.println(producto.toString());
+        }
+    }
 
+    // Método para imprimir el stock con cantidades
+    public void imprimirStockConCantidades() {
+        int countArboles = 0;
+        int countFlores = 0;
+        int countDecoraciones = 0;
 
+        for (Producto producto : Floristeria.getInstance().getProductos()) {
+            // Utilizamos 'instanceof' para determinar el tipo de producto
+            if (producto instanceof Arbol) {
+                countArboles++;  // Incrementamos el contador
+            } else if (producto instanceof Flor) {
+                countFlores++;
+            } else if (producto instanceof Decoracion) {
+                countDecoraciones++;
+            }
+        }
+        // Imprimimos la cantidad de cada tipo de producto en el stock
+        System.out.println("Cantidad de Árboles en stock: " + countArboles + "\n" +
+                "Cantidad de Flores en stock: " + countFlores + "\n" +
+                "Cantidad de Decoraciones en stock: " + countDecoraciones);
+    }
 
+    // Método para calcular el valor total de la Floristería
+    public void imprimirValorTotalFloristeria() {
+        double valorStock = Floristeria.getInstance().getProductos().stream().mapToDouble(Producto::getPrecio).sum();
+        System.out.println("Valor total de la floristería: " + valorStock + " euros");
+    }
 
     ////////////////// FIN ESPACIO TRABAJO ANA //////////////////
 
