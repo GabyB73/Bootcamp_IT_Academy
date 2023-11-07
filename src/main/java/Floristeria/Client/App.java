@@ -1,5 +1,4 @@
 package Floristeria.Client;
-import Floristeria.Products.Decoracion;
 import Floristeria.Products.Producto;
 
 
@@ -33,6 +32,26 @@ public class App {
             }
         } while (!salir);
     }
+
+    ////////////////// ESPACIO TRABAJO GABRIELA //////////////////
+
+
+
+
+
+    ////////////////// FIN ESPACIO TRABAJO GABRIELA //////////////////
+
+
+
+    ////////////////// ESPACIO TRABAJO ANA //////////////////
+
+
+
+
+    ////////////////// FIN ESPACIO TRABAJO ANA //////////////////
+
+
+    /// ESPACIO TRABAJO JUAN
 
     private void visualizarTotalDineroGanado() {
         double suma = 0;
@@ -121,6 +140,9 @@ public class App {
         }
         return floristeria;
     }
+
+    // FIN ESPACIO TRABAJO JUAN 🤓🤓
+
 
     private static int menu() {
         byte opcion;
