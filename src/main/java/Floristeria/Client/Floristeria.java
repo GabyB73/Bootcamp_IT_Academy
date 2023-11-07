@@ -11,8 +11,12 @@ import java.util.List;
 public class Floristeria {
     private static Floristeria instance;
     private String nombre;
+<<<<<<< Updated upstream
     private static List<Producto> stockProductos = new ArrayList<>();
     private static List<Ticket> tickets = new ArrayList<>();
+=======
+    private List<Producto> stockProductos;
+>>>>>>> Stashed changes
     private double valorStock;
 
     // Evitar instanciación
