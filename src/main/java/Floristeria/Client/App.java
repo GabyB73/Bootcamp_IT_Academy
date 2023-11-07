@@ -1,7 +1,9 @@
 package Floristeria.Client;
+import Floristeria.Products.Arbol;
 import Floristeria.Products.Producto;
 
 
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -34,6 +36,26 @@ public class App {
     }
 
     ////////////////// ESPACIO TRABAJO GABRIELA //////////////////
+
+    public void agregarArbol(List<Producto> stockProductos) {
+        // Solicita al usuario los datos del árbol (nombre, precio, altura)
+        System.out.println("Ingrese el nombre del árbol:");
+        String nombreArbol = sc.nextLine();
+        System.out.println("Ingrese el precio del árbol:");
+        double precioArbol = sc.nextDouble();
+        System.out.println("Ingrese la altura del árbol:");
+        double alturaArbol = sc.nextDouble();
+        sc.nextLine();
+
+        // Crea un nuevo objeto Árbol con los valores ingresados
+        Arbol arbol = new Arbol(nombreArbol, precioArbol, alturaArbol);
+
+        // Agrega el árbol a la lista de productos
+        stockProductos.add(arbol);
+
+        System.out.println("Árbol agregado correctamente al stock 😀");
+    }
+
 
 
 
