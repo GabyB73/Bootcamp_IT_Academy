@@ -234,20 +234,18 @@ public class App {
     }
 
     private void mostrarListaComprasAntiguas(Ticket ticket) {
-        System.out.println("Lista de compras antiguas:");
-        if (ticket == null) {
+        if (Floristeria.getInstance().getTickets().isEmpty()) {
             System.out.println("No hay compras antiguas");
         } else {
-
-            for (int i = 0; i <= ticket.getId(); i++) {
-                System.out.println(Floristeria.getInstance().getTickets().get(i));
+            System.out.println("Lista de compras antiguas:");
+            for (int i = 0; i < Floristeria.getInstance().getTickets().size(); i++) {
+                System.out.println(Floristeria.getInstance().getTickets().get(i).toString());
             }
         }
     }
 
     private Ticket crearTickets() {
         Ticket ticket = new Ticket();
-        Producto producto;
         System.out.println("Ticket creado correctamente");
         boolean salir = false;
         int i = 1;
@@ -264,12 +262,12 @@ public class App {
             if ((ticket.getProductos().size()) == i) {
                 i++;
             }
-            Floristeria.getInstance().getTickets().add(ticket);
             System.out.println("¿Quieres añadir otro producto?\n1. Sí\n2. No");
             if (sc.nextByte() == 2) {
                 salir = true;
             }
         }
+        Floristeria.getInstance().getTickets().add(ticket);
         return ticket;
     }
 
