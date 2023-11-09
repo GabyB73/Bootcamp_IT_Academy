@@ -1,11 +1,10 @@
 package Floristeria.Client;
+
 import Floristeria.Products.Arbol;
 import Floristeria.Products.Decoracion;
 import Floristeria.Products.Flor;
 import Floristeria.Products.Producto;
 
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,17 +23,11 @@ public class App {
                 case 3 -> agregarFlor(Floristeria.getInstance().getProductos());
                 case 4 -> agregarDecoracion(Floristeria.getInstance().getProductos());
                 case 5 -> imprimirStock();
-/*                case 6 -> retirarArbol();
-                case 7 -> retirarFlor();
-                case 8 -> retirarDecoracion();*/
-                case 9 -> imprimirStockConCantidades();
-                case 10 -> imprimirValorTotalFloristeria();
-             // case 5 -> imprimirStock();
                 case 6 -> retirarArbol(nombre, Floristeria.getInstance().getProductos());
                 case 7 -> retirarFlor(nombre, Floristeria.getInstance().getProductos());
                 case 8 -> retirarDecoracion(nombre, Floristeria.getInstance().getProductos());
-             // case 9 -> imprimirStockConCantidades();
-             // case 10 -> imprimirValorTotalFloristeria();*/
+                case 9 -> imprimirStockConCantidades();
+                case 10 -> imprimirValorTotalFloristeria();
                 case 11 -> ticket = crearTickets();
                 case 12 -> mostrarListaComprasAntiguas(ticket);
                 case 13 -> visualizarTotalDineroGanado();
@@ -68,6 +61,7 @@ public class App {
 
         System.out.println("Arbol agregado correctamente al stock");
     }
+
     public void agregarFlor(List<Producto> stockProductos) {
         // Solicita al usuario los datos de la flor (nombre, precio, color)
         System.out.println("Ingrese el nombre de la flor:");
@@ -86,6 +80,7 @@ public class App {
 
         System.out.println("Flor agregada correctamente al stock");
     }
+
     public void agregarDecoracion(List<Producto> stockProductos) {
         // Solicita al usuario los datos de la decoración (nombre, precio, material)
         System.out.println("Ingrese el nombre de la decoracion:");
@@ -106,6 +101,7 @@ public class App {
 
         System.out.println("Decoracion agregada correctamente al stock");
     }
+
     public Arbol buscarArbol(String nombre, List<Producto> stockProductos) {
         for (Producto producto : stockProductos) {
             if (producto instanceof Arbol && producto.getNombre().equalsIgnoreCase(nombre)) {
@@ -114,18 +110,19 @@ public class App {
         }
         return null; // Devuelve null si no se encuentra el arbol.
     }
-    public Flor buscarFlor(String nombre, List<Producto> stockProducto){
+
+    public Flor buscarFlor(String nombre, List<Producto> stockProducto) {
         for (Producto producto : stockProducto) {
-            if (producto instanceof Flor && producto.getNombre().equalsIgnoreCase(nombre)){
+            if (producto instanceof Flor && producto.getNombre().equalsIgnoreCase(nombre)) {
                 return (Flor) producto; // Hacemos un casting a Flor si encontramos un producto que es una flor.
             }
         }
         return null; // Devuelve null si no se encuentra la flor.
     }
 
-    public Decoracion buscarDecoracion(String nombre, List<Producto> stockProductos){
-        for (Producto producto : stockProductos){
-            if (producto instanceof Decoracion && producto.getNombre().equalsIgnoreCase(nombre)){
+    public Decoracion buscarDecoracion(String nombre, List<Producto> stockProductos) {
+        for (Producto producto : stockProductos) {
+            if (producto instanceof Decoracion && producto.getNombre().equalsIgnoreCase(nombre)) {
                 return (Decoracion) producto; // Hacemos un casting a Decoracion si encontramos un producto que es una decoracion.
             }
         }
@@ -148,6 +145,7 @@ public class App {
             System.out.println("Arbol retirado correctamente\n");
         }
     }
+
     public void retirarFlor(String nombre, List<Producto> stockProductos) {
         // Pedir al usuario que ingrese el nombre de la flor que desee retirar
         System.out.print("Introduzca el nombre de la flor que desea retirar: ");
@@ -164,6 +162,7 @@ public class App {
             System.out.println("Flor retirada correctamente\n");
         }
     }
+
     public void retirarDecoracion(String nombre, List<Producto> stockProductos) {
         // Pedir al usuario que ingrese el nombre de la decoracion que desee retirar
         System.out.print("Introduzca el nombre de la decoracion que desea retirar: ");
@@ -182,7 +181,6 @@ public class App {
     }
 
     ////////////////// FIN ESPACIO TRABAJO GABRIELA //////////////////
-
 
 
     ////////////////// ESPACIO TRABAJO ANA //////////////////
