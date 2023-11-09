@@ -47,7 +47,7 @@ public class Floristeria {
     }
 
     // Método para imprimir los productos
-    public void imprimirStock() {
+    /*public void imprimirStock() {
         System.out.println("Productos en la floristería:");
         for (Producto producto : stockProductos) {
             System.out.println(producto.toString());
@@ -81,7 +81,7 @@ public class Floristeria {
     public void imprimirValorTotalFloristeria() {
         valorStock = stockProductos.stream().mapToDouble(Producto::getPrecio).sum();
         System.out.println("Valor total de la floristería: " + valorStock + " euros");
-    }
+    }*/
 
     // Evitar duplicación de instancias
     @Override
