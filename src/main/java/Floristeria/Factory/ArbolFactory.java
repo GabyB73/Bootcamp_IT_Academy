@@ -3,9 +3,10 @@ package Floristeria.Factory;
 import Floristeria.Products.Arbol;
 import Floristeria.Products.Decoracion;
 import Floristeria.Products.Flor;
+import Floristeria.Products.Producto;
 
 public class ArbolFactory implements ProductFactory{
-    private static ArbolFactory instance = null;
+    private final static ArbolFactory instance = null;
 
     @Override
     public Arbol crearArbol(String nombre, double precio, double altura) {

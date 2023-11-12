@@ -1,7 +1,9 @@
 package Floristeria.Products;
 
+import Floristeria.Client.Floristeria;
+
 public class Flor extends Producto {
-    private String color;
+    private final String color;
 
     public Flor(String nombre, double precio, String color) {
         super(nombre, precio);
@@ -16,10 +18,6 @@ public class Flor extends Producto {
 
     @Override
     public String toString() {
-        return "Flor{" +
-                "nombre='" + nombre + '\'' +
-                ", precio=" + precio +
-                ", color=" + color +
-                '}';
+        return id + "\t" + nombre + "\t" + precio + "€\t" + color + "\n";
     }
 }

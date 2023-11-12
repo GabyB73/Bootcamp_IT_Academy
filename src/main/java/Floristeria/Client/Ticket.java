@@ -38,11 +38,8 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" +
-                "id=" + id +
-                ", total=" + total +
-                ", productos=" + productos +
-                '}';
+        return "Ticket Id=" + id + " Total=" + getTotal() + ", Productos= " + productos.size() + "\n" +
+                productos + '}';
     }
 
 }
