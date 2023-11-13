@@ -1,0 +1,6 @@
+0	arbol1	2.0€	1.0
+1	rosa	4.0€	false
+3	arco1	25.0€	false
+4	arco2	20.0€	false
+5	arco3	50.0€	true
+6	arco4	15.0€	false
