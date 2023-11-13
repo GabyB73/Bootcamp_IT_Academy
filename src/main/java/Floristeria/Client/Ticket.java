@@ -38,12 +38,8 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" +
-                "Id=" + id +
-                ", Total=" + getTotal() +
-                ", Productos= " + productos.stream().count() + "\n" +
-                productos +
-                '}';
+        return "Ticket Id=" + id + " Total=" + getTotal() + ", Productos= " + productos.size() + "\n" +
+                productos + '}';
     }
 
 }

@@ -1,7 +1,9 @@
 package Floristeria.Products;
 
-public class Arbol extends Producto {
-    private double altura;
+import Floristeria.Client.Floristeria;
+
+public class Arbol extends Producto{
+    private final double altura;
 
     public Arbol(String nombre, double precio, double altura) {
         super(nombre, precio);
@@ -16,10 +18,6 @@ public class Arbol extends Producto {
 
     @Override
     public String toString() {
-        return "Arbol{" +
-                "nombre='" + nombre + '\'' +
-                ", precio=" + precio +
-                ", altura=" + altura +
-                '}';
+        return id + "\t" + nombre + "\t" + precio +"€\t" + altura + "\n";
     }
 }

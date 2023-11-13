@@ -1,8 +1,5 @@
 package Floristeria.Client;
 
-import Floristeria.Products.Arbol;
-import Floristeria.Products.Decoracion;
-import Floristeria.Products.Flor;
 import Floristeria.Products.Producto;
 
 import java.util.ArrayList;
@@ -11,9 +8,11 @@ import java.util.List;
 public class Floristeria {
     private static Floristeria instance;
     private String nombre;
+
     private static List<Producto> stockProductos = new ArrayList<>();
     private static List<Ticket> tickets = new ArrayList<>();
-    private double valorStock;
+    private int id = 0;
+    private static int nextId = 1;
 
     // Evitar instanciación
     private Floristeria() {
@@ -35,15 +34,19 @@ public class Floristeria {
     }
 
     public List<Producto> getProductos() {
+        id = nextId;
         return stockProductos;
+    }
+    public static void setStockProductos(List<Producto> stockProductos) {
+        Floristeria.stockProductos = stockProductos;
     }
 
     public List<Ticket> getTickets() {
         return tickets;
     }
 
-    public double getValorStock() {
-        return valorStock;
+    public int getId() {
+        return id;
     }
 
     // Evitar duplicación de instancias

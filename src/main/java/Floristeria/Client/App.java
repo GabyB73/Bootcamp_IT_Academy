@@ -1,5 +1,10 @@
 package Floristeria.Client;
 
+import Floristeria.DB.EscribirArchivo;
+import Floristeria.DB.LeerArchivo;
+import Floristeria.Factory.ArbolFactory;
+import Floristeria.Factory.DecoracionFactory;
+import Floristeria.Factory.FlorFactory;
 import Floristeria.Products.Arbol;
 import Floristeria.Products.Decoracion;
 import Floristeria.Products.Flor;
@@ -10,12 +15,23 @@ import java.util.Scanner;
 
 public class App {
     static Scanner sc = new Scanner(System.in);
+    static LeerArchivo leer = new LeerArchivo();
+    static EscribirArchivo escribir = new EscribirArchivo();
     Ticket ticket = new Ticket();
+    Floristeria floristeria = Floristeria.getInstance();
+
+
+    public App() {
+        System.out.println("Bienvenido a la floristería " + Floristeria.getInstance().getNombre());
+    }
 
     public void start() {
+
+        escribir.conectar();
+        floristeria.setStockProductos(leer.lectorStockP());
+
         boolean salir = false;
         do {
-            String nombre = "";
 
             switch (menu()) {
                 case 1 -> crearFloristeria();
@@ -23,25 +39,30 @@ public class App {
                 case 3 -> agregarFlor(Floristeria.getInstance().getProductos());
                 case 4 -> agregarDecoracion(Floristeria.getInstance().getProductos());
                 case 5 -> imprimirStock();
-                case 6 -> retirarArbol(nombre, Floristeria.getInstance().getProductos());
-                case 7 -> retirarFlor(nombre, Floristeria.getInstance().getProductos());
-                case 8 -> retirarDecoracion(nombre, Floristeria.getInstance().getProductos());
+                case 6 -> retirarArbol(Floristeria.getInstance().getProductos());
+                case 7 -> retirarFlor(Floristeria.getInstance().getProductos());
+                case 8 -> retirarDecoracion(Floristeria.getInstance().getProductos());
                 case 9 -> imprimirStockConCantidades();
                 case 10 -> imprimirValorTotalFloristeria();
                 case 11 -> ticket = crearTickets();
-                case 12 -> mostrarListaComprasAntiguas(ticket);
+                case 12 -> mostrarListaComprasAntiguas();
                 case 13 -> visualizarTotalDineroGanado();
-/*              case 0 -> cerrarApp();
-                System.out.println("Gracias por utilizar la aplicación");
+                case 0 -> {
+                    cerrarApp();
                     salir = true;
-                    break;*/
+                }
             }
         } while (!salir);
     }
 
-    ////////////////// ESPACIO TRABAJO GABRIELA //////////////////
+    private void cerrarApp() {
+        System.out.println("Gracias por utilizar la aplicacion");
+        escribir.guardarStock(floristeria.getProductos());
+        sc.close();
+    }
 
     public void agregarArbol(List<Producto> stockProductos) {
+        ArbolFactory arbolFactory = new ArbolFactory();
         // Solicita al usuario los datos del arbol (nombre, precio, altura)
         System.out.println("Ingrese el nombre del arbol:");
         String nombreArbol = sc.nextLine();
@@ -52,17 +73,13 @@ public class App {
         double alturaArbol = sc.nextDouble();
         sc.nextLine();
 
-        // Crea un nuevo objeto Arbol con los valores ingresados
-        Arbol arbol = new Arbol(nombreArbol, precioArbol, alturaArbol);
-
-        // Agrega el arbol a la lista de productos
-        stockProductos.add(arbol);
-        System.out.println(stockProductos);
-
-        System.out.println("Arbol agregado correctamente al stock");
+        // Crea un nuevo objeto arbol con los valores ingresados
+        stockProductos.add(arbolFactory.crearArbol(nombreArbol, precioArbol, alturaArbol));
+        System.out.println("Árbol " + nombreArbol + " agregado correctamente al stock");
     }
 
     public void agregarFlor(List<Producto> stockProductos) {
+        FlorFactory florFactory = new FlorFactory();
         // Solicita al usuario los datos de la flor (nombre, precio, color)
         System.out.println("Ingrese el nombre de la flor:");
         String nombreFlor = sc.nextLine();
@@ -72,16 +89,13 @@ public class App {
         System.out.println("Ingrese el color de la flor:");
         String colorFlor = sc.nextLine();
 
-        // Crea un nuevo objeto flor con los valores ingresados
-        Flor flor = new Flor(nombreFlor, precioFlor, colorFlor);
 
-        // Agrega la flor a la lista de productos
-        stockProductos.add(flor);
-
-        System.out.println("Flor agregada correctamente al stock");
+        stockProductos.add(florFactory.crearFlor(nombreFlor, precioFlor, colorFlor));
+        System.out.println("Flor " + nombreFlor + " agregada correctamente al stock");
     }
 
     public void agregarDecoracion(List<Producto> stockProductos) {
+        DecoracionFactory decoracionFactory = new DecoracionFactory();
         // Solicita al usuario los datos de la decoración (nombre, precio, material)
         System.out.println("Ingrese el nombre de la decoracion:");
         String nombreDecoracion = sc.nextLine();
@@ -93,13 +107,8 @@ public class App {
 
         boolean materialIsWood = material.equals("wood"); // Verifica si es "wood" para establecer el valor booleano
 
-        // Crea un nuevo objeto Decoracion con los valores ingresados
-        Decoracion decoracion = new Decoracion(nombreDecoracion, precioDecoracion, materialIsWood);
-
-        // Agrega la decoracion a la lista de productos
-        stockProductos.add(decoracion);
-
-        System.out.println("Decoracion agregada correctamente al stock");
+        stockProductos.add(decoracionFactory.crearDecoracion(nombreDecoracion, precioDecoracion, materialIsWood));
+        System.out.println("Decoracion " + nombreDecoracion + " agregada correctamente al stock");
     }
 
     public Arbol buscarArbol(String nombre, List<Producto> stockProductos) {
@@ -129,7 +138,7 @@ public class App {
         return null; // Devuelve null si no se encuentra la decoración.
     }
 
-    public void retirarArbol(String nombre, List<Producto> stockProductos) {
+    public void retirarArbol(List<Producto> stockProductos) {
         // Pedir al usuario que ingrese el nombre del árbol que desea retirar
         System.out.print("Introduzca el nombre del árbol que desea retirar: ");
         String nombreArbol = sc.nextLine();
@@ -146,7 +155,7 @@ public class App {
         }
     }
 
-    public void retirarFlor(String nombre, List<Producto> stockProductos) {
+    public void retirarFlor(List<Producto> stockProductos) {
         // Pedir al usuario que ingrese el nombre de la flor que desee retirar
         System.out.print("Introduzca el nombre de la flor que desea retirar: ");
         String nombreFlor = sc.nextLine();
@@ -163,7 +172,7 @@ public class App {
         }
     }
 
-    public void retirarDecoracion(String nombre, List<Producto> stockProductos) {
+    public void retirarDecoracion(List<Producto> stockProductos) {
         // Pedir al usuario que ingrese el nombre de la decoracion que desee retirar
         System.out.print("Introduzca el nombre de la decoracion que desea retirar: ");
         String nombreDecoracion = sc.nextLine();
@@ -180,15 +189,70 @@ public class App {
         }
     }
 
-    ////////////////// FIN ESPACIO TRABAJO GABRIELA //////////////////
-
-
-    ////////////////// ESPACIO TRABAJO ANA //////////////////
     // Método para imprimir los productos
     public void imprimirStock() {
         System.out.println("Productos en la floristería:");
-        for (Producto producto : Floristeria.getInstance().getProductos()) {
-            System.out.println(producto.toString());
+        imprimirArbol();
+        imprimirFlor();
+        imprimirDecoracion();
+    }
+
+    public void imprimirArbol() {
+        System.out.println("Arbol:\n\t\tNombre\tPrecio\tAltura");
+
+        for (int i = 0; i < Floristeria.getInstance().getProductos().size(); i++) {
+            String nombreArbol = Floristeria.getInstance().getProductos().get(i).getNombre();
+            double precioArbol = Floristeria.getInstance().getProductos().get(i).getPrecio();
+
+            if (Floristeria.getInstance().getProductos().get(i) instanceof Arbol) {
+                double alturaArbol = ((Arbol) Floristeria.getInstance().getProductos().get(i)).getAltura();
+                if (nombreArbol.length() > 6) {
+                    StringBuilder nombre = new StringBuilder(nombreArbol.substring(0, 6));
+                    String nombreFinal = nombre.substring(0);
+                    System.out.println("\t\t" + nombreFinal + "\t" + precioArbol + "€\t" + alturaArbol);
+                } else {
+                    System.out.println("\t\t" + nombreArbol + "\t" + precioArbol + "€\t" + alturaArbol);
+                }
+            }
+        }
+    }
+
+    public void imprimirFlor() {
+        System.out.println("Flor:\n\t\tNombre\tPrecio\tColor");
+        for (int i = 0; i < Floristeria.getInstance().getProductos().size(); i++) {
+            String nombreFlor = Floristeria.getInstance().getProductos().get(i).getNombre();
+            double precioFlor = Floristeria.getInstance().getProductos().get(i).getPrecio();
+
+            if (Floristeria.getInstance().getProductos().get(i) instanceof Flor) {
+                String colorFlor = ((Flor) Floristeria.getInstance().getProductos().get(i)).getColor();
+                if (nombreFlor.length() > 6) {
+                    StringBuilder nombre = new StringBuilder(nombreFlor.substring(0, 6));
+                    String nombreFinal = nombre.substring(0);
+                    System.out.println("\t\t" + nombreFinal + "\t" + precioFlor + "€\t" + colorFlor);
+                } else {
+                    System.out.println("\t\t" + nombreFlor + "\t" + precioFlor + "€\t" + colorFlor);
+                }
+            }
+        }
+    }
+
+    public void imprimirDecoracion() {
+        System.out.println("Deco:\n\t\tNombre\tPrecio\tEsMadera?");
+        for (int i = 0; i < Floristeria.getInstance().getProductos().size(); i++) {
+            String nombreDeco = Floristeria.getInstance().getProductos().get(i).getNombre();
+            double precioDeco = Floristeria.getInstance().getProductos().get(i).getPrecio();
+
+            if (Floristeria.getInstance().getProductos().get(i) instanceof Decoracion) {
+                boolean materialDeco = ((Decoracion) Floristeria.getInstance().getProductos().get(i)).getMaterialIsWood();
+
+                if (nombreDeco.length() > 6) {
+                    StringBuilder nombre = new StringBuilder(nombreDeco.substring(0, 6));
+                    String nombreFinal = nombre.substring(0);
+                    System.out.println("\t\t" + nombreFinal + "\t" + precioDeco + "€\t" + materialDeco);
+                } else {
+                    System.out.println("\t\t" + nombreDeco + "\t" + precioDeco + "€\t" + materialDeco);
+                }
+            }
         }
     }
 
@@ -220,20 +284,19 @@ public class App {
         System.out.println("Valor total de la floristería: " + valorStock + " euros");
     }
 
-    ////////////////// FIN ESPACIO TRABAJO ANA //////////////////
-
-
-    /// ESPACIO TRABAJO JUAN
-
     private void visualizarTotalDineroGanado() {
         double suma = 0;
-        for (int i = 0; i <= ticket.getId(); i++) {
-            suma += Floristeria.getInstance().getTickets().get(i).getTotal();
+        if (Floristeria.getInstance().getTickets().isEmpty()) {
+            System.out.println("No se han hecho ventas");
+        } else {
+            for (int i = 0; i <= ticket.getId(); i++) {
+                suma += Floristeria.getInstance().getTickets().get(i).getTotal();
+            }
+            System.out.println("El total de dinero ganado con todas las ventas es:\n + " + suma + "€");
         }
-        System.out.println("El total de dinero ganado con todas las ventas es:\n + " + suma + "€");
     }
 
-    private void mostrarListaComprasAntiguas(Ticket ticket) {
+    private void mostrarListaComprasAntiguas() {
         if (Floristeria.getInstance().getTickets().isEmpty()) {
             System.out.println("No hay compras antiguas");
         } else {
@@ -251,13 +314,13 @@ public class App {
         int i = 1;
         while (!salir) {
             byte opcion;
-            System.out.println("Añade el " + i + "º producto:\n1. Decoracion\n2. Arbol\n3. Flor");
+            System.out.println("Añade el " + i + "º producto:\n1. Arbol\n2. Flor\n3. Decoracion");
             opcion = sc.nextByte();
             sc.nextLine();
             switch (opcion) {
-                case 1 -> anadirDecoTicket(ticket);
-                case 2 -> anadirArbolTicket(ticket);
-                case 3 -> anadirFlorTicket(ticket);
+                case 1 -> anadirArbolTicket(ticket);
+                case 2 -> anadirFlorTicket(ticket);
+                case 3 -> anadirDecoTicket(ticket);
             }
             if ((ticket.getProductos().size()) == i) {
                 i++;
@@ -275,7 +338,7 @@ public class App {
         System.out.println("Introduce el nombre de la flor");
         String nombre = sc.nextLine();
         Floristeria.getInstance()
-                .getProductos().stream().filter(p -> p.getNombre().equals(nombre)).findFirst().ifPresentOrElse(
+                .getProductos().stream().filter(p -> p.getNombre().equalsIgnoreCase(nombre)).findFirst().ifPresentOrElse(
                         p -> {
                             ticket.addProducto(p);
                             System.out.println("Flor: " + nombre + " añadida al ticket");
@@ -288,7 +351,7 @@ public class App {
         System.out.println("Introduce el nombre del arbol");
         String nombre = sc.nextLine();
         Floristeria.getInstance()
-                .getProductos().stream().filter(p -> p.getNombre().equals(nombre)).findFirst().ifPresentOrElse(
+                .getProductos().stream().filter(p -> p.getNombre().equalsIgnoreCase(nombre)).findFirst().ifPresentOrElse(
                         p -> {
                             ticket.addProducto(p);
                             System.out.println("Arbol: " + nombre + " añadido al ticket");
@@ -301,7 +364,7 @@ public class App {
         System.out.println("Introduce el nombre de la decoracion");
         String nombre = sc.nextLine();
         Floristeria.getInstance()
-                .getProductos().stream().filter(p -> p.getNombre().equals(nombre)).findFirst().ifPresentOrElse(
+                .getProductos().stream().filter(p -> p.getNombre().equalsIgnoreCase(nombre)).findFirst().ifPresentOrElse(
                         p -> {
                             ticket.addProducto(p);
                             System.out.println("Decoracion: " + nombre + " añadida al ticket");
@@ -310,8 +373,8 @@ public class App {
                 );
     }
 
-    private Floristeria crearFloristeria() {
 
+    private void crearFloristeria() {
         Floristeria floristeria = Floristeria.getInstance();
 
         if (floristeria.getNombre() == null) {
@@ -322,11 +385,7 @@ public class App {
         } else {
             System.out.println("Ya existe una floristería con el nombre " + floristeria.getNombre());
         }
-        return floristeria;
     }
-
-    // FIN ESPACIO TRABAJO JUAN
-
 
     private static int menu() {
         byte opcion;
@@ -358,3 +417,4 @@ public class App {
         return opcion;
     }
 }
+
