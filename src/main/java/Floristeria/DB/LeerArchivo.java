@@ -50,8 +50,9 @@ public class LeerArchivo implements Conexion {
         ArbolFactory aF = new ArbolFactory();
         FlorFactory fF = new FlorFactory();
         DecoracionFactory dF = new DecoracionFactory();
-        String patron = "(\\d+)\t([^\t]+)\t(\\d+\\.\\d+)€\t([a-zA-Z0-9]+)";
+        String patron = "(\\d+)\t([^\t]+)\t(\\d+\\.\\d+)€\t([\\d]+|[a-zA-Z]+|(true|false))";
         Pattern pattern = Pattern.compile(patron);
+
         Matcher match = pattern.matcher(linea);
 
         if (match.find()) {
@@ -59,31 +60,22 @@ public class LeerArchivo implements Conexion {
             String nombre = match.group(2);
             double precio = Double.parseDouble(match.group(3));
             String tipoS = match.group(4);
-            String estoEs;
 
-            try {
-                double tipoD = Double.parseDouble(match.group(4));
-                estoEs = "double";
-            } catch (NumberFormatException e){
-                boolean tipoB = Boolean.parseBoolean(match.group(4));
-                estoEs = "boolean";
-            }
-
-            switch (estoEs) {
-                case "double" :
-                    stockProductoLeido.add(aF.crearArbol(nombre, precio, Double.parseDouble(tipoS)));
+            if (tipoS != null) {
+                try {
+                    double tipoD = Double.parseDouble(tipoS);
+                    stockProductoLeido.add(aF.crearArbol(nombre, precio, tipoD));
                     mapaProductos.put("Arbol", mapaProductos.get("Arbol") + 1);
-                    break;
-                case "String" :
-                    stockProductoLeido.add(fF.crearFlor(nombre, precio, tipoS));
-                    mapaProductos.put("Flor", mapaProductos.get("Flor") + 1);
-                    break;
-                case "boolean" :
-                    stockProductoLeido.add(dF.crearDecoracion(nombre, precio, Boolean.parseBoolean(tipoS)));
-                    mapaProductos.put("Decoracion", mapaProductos.get("Decoracion") + 1);
-                    break;
-                default:
-                    System.out.println("Tipo no reconocido");
+                } catch (NumberFormatException e) {
+                    if (tipoS.equalsIgnoreCase("true") || tipoS.equalsIgnoreCase("false")) {
+                        boolean tipoB = Boolean.parseBoolean(tipoS);
+                        stockProductoLeido.add(dF.crearDecoracion(nombre, precio, tipoB));
+                        mapaProductos.put("Decoracion", mapaProductos.get("Decoracion") + 1);
+                    } else {
+                        stockProductoLeido.add(fF.crearFlor(nombre, precio, tipoS));
+                        mapaProductos.put("Flor", mapaProductos.get("Flor") + 1);
+                    }
+                }
             }
         }
     }

@@ -22,7 +22,7 @@ public class App {
 
 
     public App() {
-        System.out.println("Bienvenido a la floristería " + Floristeria.getInstance().getNombre());
+        System.out.println("Bienvenido a la floristería " + floristeria.getNombre());
     }
 
     public void start() {
@@ -35,13 +35,13 @@ public class App {
 
             switch (menu()) {
                 case 1 -> crearFloristeria();
-                case 2 -> agregarArbol(Floristeria.getInstance().getProductos());
-                case 3 -> agregarFlor(Floristeria.getInstance().getProductos());
-                case 4 -> agregarDecoracion(Floristeria.getInstance().getProductos());
+                case 2 -> agregarArbol(floristeria.getProductos());
+                case 3 -> agregarFlor(floristeria.getProductos());
+                case 4 -> agregarDecoracion(floristeria.getProductos());
                 case 5 -> imprimirStock();
-                case 6 -> retirarArbol(Floristeria.getInstance().getProductos());
-                case 7 -> retirarFlor(Floristeria.getInstance().getProductos());
-                case 8 -> retirarDecoracion(Floristeria.getInstance().getProductos());
+                case 6 -> retirarArbol(floristeria.getProductos());
+                case 7 -> retirarFlor(floristeria.getProductos());
+                case 8 -> retirarDecoracion(floristeria.getProductos());
                 case 9 -> imprimirStockConCantidades();
                 case 10 -> imprimirValorTotalFloristeria();
                 case 11 -> ticket = crearTickets();
@@ -198,59 +198,62 @@ public class App {
     }
 
     public void imprimirArbol() {
-        System.out.println("Arbol:\n\t\tNombre\tPrecio\tAltura");
+        System.out.println("Arbol:\n\tId\tNombre\tPrecio\tAltura");
 
-        for (int i = 0; i < Floristeria.getInstance().getProductos().size(); i++) {
-            String nombreArbol = Floristeria.getInstance().getProductos().get(i).getNombre();
-            double precioArbol = Floristeria.getInstance().getProductos().get(i).getPrecio();
+        for (int i = 0; i < floristeria.getProductos().size(); i++) {
+            String nombreArbol = floristeria.getProductos().get(i).getNombre();
+            double precioArbol = floristeria.getProductos().get(i).getPrecio();
+            int id = floristeria.getProductos().get(i).getId();
 
-            if (Floristeria.getInstance().getProductos().get(i) instanceof Arbol) {
-                double alturaArbol = ((Arbol) Floristeria.getInstance().getProductos().get(i)).getAltura();
+            if (floristeria.getProductos().get(i) instanceof Arbol) {
+                double alturaArbol = ((Arbol) floristeria.getProductos().get(i)).getAltura();
                 if (nombreArbol.length() > 6) {
                     StringBuilder nombre = new StringBuilder(nombreArbol.substring(0, 6));
                     String nombreFinal = nombre.substring(0);
-                    System.out.println("\t\t" + nombreFinal + "\t" + precioArbol + "€\t" + alturaArbol);
+                    System.out.println("\t" + id + "\t" + nombreFinal + "\t" + precioArbol + "€\t" + alturaArbol);
                 } else {
-                    System.out.println("\t\t" + nombreArbol + "\t" + precioArbol + "€\t" + alturaArbol);
+                    System.out.println("\t" + id + "\t" + nombreArbol + "\t" + precioArbol + "€\t" + alturaArbol);
                 }
             }
         }
     }
 
     public void imprimirFlor() {
-        System.out.println("Flor:\n\t\tNombre\tPrecio\tColor");
-        for (int i = 0; i < Floristeria.getInstance().getProductos().size(); i++) {
-            String nombreFlor = Floristeria.getInstance().getProductos().get(i).getNombre();
-            double precioFlor = Floristeria.getInstance().getProductos().get(i).getPrecio();
+        System.out.println("Flor:\n\tId\tNombre\tPrecio\tColor");
+        for (int i = 0; i < floristeria.getProductos().size(); i++) {
+            String nombreFlor = floristeria.getProductos().get(i).getNombre();
+            double precioFlor = floristeria.getProductos().get(i).getPrecio();
+            int id = floristeria.getProductos().get(i).getId();
 
-            if (Floristeria.getInstance().getProductos().get(i) instanceof Flor) {
-                String colorFlor = ((Flor) Floristeria.getInstance().getProductos().get(i)).getColor();
+            if (floristeria.getProductos().get(i) instanceof Flor) {
+                String colorFlor = ((Flor) floristeria.getProductos().get(i)).getColor();
                 if (nombreFlor.length() > 6) {
                     StringBuilder nombre = new StringBuilder(nombreFlor.substring(0, 6));
                     String nombreFinal = nombre.substring(0);
-                    System.out.println("\t\t" + nombreFinal + "\t" + precioFlor + "€\t" + colorFlor);
+                    System.out.println("\t" + id + "\t" + nombreFinal + "\t" + precioFlor + "€\t" + colorFlor);
                 } else {
-                    System.out.println("\t\t" + nombreFlor + "\t" + precioFlor + "€\t" + colorFlor);
+                    System.out.println("\t" + id + "\t" + nombreFlor + "\t" + precioFlor + "€\t" + colorFlor);
                 }
             }
         }
     }
 
     public void imprimirDecoracion() {
-        System.out.println("Deco:\n\t\tNombre\tPrecio\tEsMadera?");
-        for (int i = 0; i < Floristeria.getInstance().getProductos().size(); i++) {
-            String nombreDeco = Floristeria.getInstance().getProductos().get(i).getNombre();
-            double precioDeco = Floristeria.getInstance().getProductos().get(i).getPrecio();
+        System.out.println("Deco:\n\tId\tNombre\tPrecio\tEsMadera?");
+        for (int i = 0; i < floristeria.getProductos().size(); i++) {
+            String nombreDeco = floristeria.getProductos().get(i).getNombre();
+            double precioDeco = floristeria.getProductos().get(i).getPrecio();
+            int id = floristeria.getProductos().get(i).getId();
 
-            if (Floristeria.getInstance().getProductos().get(i) instanceof Decoracion) {
-                boolean materialDeco = ((Decoracion) Floristeria.getInstance().getProductos().get(i)).getMaterialIsWood();
+            if (floristeria.getProductos().get(i) instanceof Decoracion) {
+                boolean materialDeco = ((Decoracion) floristeria.getProductos().get(i)).getMaterialIsWood();
 
                 if (nombreDeco.length() > 6) {
                     StringBuilder nombre = new StringBuilder(nombreDeco.substring(0, 6));
                     String nombreFinal = nombre.substring(0);
-                    System.out.println("\t\t" + nombreFinal + "\t" + precioDeco + "€\t" + materialDeco);
+                    System.out.println("\t" + id + "\t" + nombreFinal + "\t" + precioDeco + "€\t" + materialDeco);
                 } else {
-                    System.out.println("\t\t" + nombreDeco + "\t" + precioDeco + "€\t" + materialDeco);
+                    System.out.println("\t" + id + "\t" + nombreDeco + "\t" + precioDeco + "€\t" + materialDeco);
                 }
             }
         }
@@ -262,7 +265,7 @@ public class App {
         int countFlores = 0;
         int countDecoraciones = 0;
 
-        for (Producto producto : Floristeria.getInstance().getProductos()) {
+        for (Producto producto : floristeria.getProductos()) {
             // Utilizamos 'instanceof' para determinar el tipo de producto
             if (producto instanceof Arbol) {
                 countArboles++;  // Incrementamos el contador
@@ -280,29 +283,29 @@ public class App {
 
     // Método para calcular el valor total de la Floristería
     public void imprimirValorTotalFloristeria() {
-        double valorStock = Floristeria.getInstance().getProductos().stream().mapToDouble(Producto::getPrecio).sum();
+        double valorStock = floristeria.getProductos().stream().mapToDouble(Producto::getPrecio).sum();
         System.out.println("Valor total de la floristería: " + valorStock + " euros");
     }
 
     private void visualizarTotalDineroGanado() {
         double suma = 0;
-        if (Floristeria.getInstance().getTickets().isEmpty()) {
+        if (floristeria.getTickets().isEmpty()) {
             System.out.println("No se han hecho ventas");
         } else {
-            for (int i = 0; i <= ticket.getId(); i++) {
-                suma += Floristeria.getInstance().getTickets().get(i).getTotal();
+            for (int i = 0; i <= floristeria.getTickets().size(); i++) {
+                suma += floristeria.getTickets().get(i).getTotal();
             }
             System.out.println("El total de dinero ganado con todas las ventas es:\n + " + suma + "€");
         }
     }
 
     private void mostrarListaComprasAntiguas() {
-        if (Floristeria.getInstance().getTickets().isEmpty()) {
+        if (floristeria.getTickets().isEmpty()) {
             System.out.println("No hay compras antiguas");
         } else {
             System.out.println("Lista de compras antiguas:");
-            for (int i = 0; i < Floristeria.getInstance().getTickets().size(); i++) {
-                System.out.println(Floristeria.getInstance().getTickets().get(i).toString());
+            for (int i = 0; i < floristeria.getTickets().size(); i++) {
+                System.out.println(floristeria.getTickets().get(i).toString());
             }
         }
     }
@@ -330,47 +333,47 @@ public class App {
                 salir = true;
             }
         }
-        Floristeria.getInstance().getTickets().add(ticket);
+        floristeria.getTickets().add(ticket);
         return ticket;
     }
 
     private void anadirFlorTicket(Ticket ticket) {
         System.out.println("Introduce el nombre de la flor");
         String nombre = sc.nextLine();
-        Floristeria.getInstance()
-                .getProductos().stream().filter(p -> p.getNombre().equalsIgnoreCase(nombre)).findFirst().ifPresentOrElse(
-                        p -> {
-                            ticket.addProducto(p);
-                            System.out.println("Flor: " + nombre + " añadida al ticket");
-                        },
-                        () -> System.out.println("No existe una flor con ese nombre")
-                );
+        floristeria.getProductos().stream().filter
+                (p -> p.getNombre().equalsIgnoreCase(nombre)).findFirst().ifPresentOrElse(
+                p -> {
+                    ticket.addProducto(p);
+                    System.out.println("Flor: " + nombre + " añadida al ticket");
+                },
+                () -> System.out.println("No existe una flor con ese nombre")
+        );
     }
 
     private void anadirArbolTicket(Ticket ticket) {
         System.out.println("Introduce el nombre del arbol");
         String nombre = sc.nextLine();
-        Floristeria.getInstance()
-                .getProductos().stream().filter(p -> p.getNombre().equalsIgnoreCase(nombre)).findFirst().ifPresentOrElse(
-                        p -> {
-                            ticket.addProducto(p);
-                            System.out.println("Arbol: " + nombre + " añadido al ticket");
-                        },
-                        () -> System.out.println("No existe un arbol con ese nombre")
-                );
+        floristeria.getProductos().stream().filter
+                (p -> p.getNombre().equalsIgnoreCase(nombre)).findFirst().ifPresentOrElse(
+                p -> {
+                    ticket.addProducto(p);
+                    System.out.println("Arbol: " + nombre + " añadido al ticket");
+                },
+                () -> System.out.println("No existe un arbol con ese nombre")
+        );
     }
 
     private void anadirDecoTicket(Ticket ticket) {
         System.out.println("Introduce el nombre de la decoracion");
         String nombre = sc.nextLine();
-        Floristeria.getInstance()
-                .getProductos().stream().filter(p -> p.getNombre().equalsIgnoreCase(nombre)).findFirst().ifPresentOrElse(
-                        p -> {
-                            ticket.addProducto(p);
-                            System.out.println("Decoracion: " + nombre + " añadida al ticket");
-                        },
-                        () -> System.out.println("No existe una decoracion con ese nombre")
-                );
+        floristeria.getProductos().stream().filter
+                (p -> p.getNombre().equalsIgnoreCase(nombre)).findFirst().ifPresentOrElse(
+                p -> {
+                    ticket.addProducto(p);
+                    System.out.println("Decoracion: " + nombre + " añadida al ticket");
+                },
+                () -> System.out.println("No existe una decoracion con ese nombre")
+        );
     }
 
 
@@ -394,19 +397,19 @@ public class App {
 
         do {
             System.out.println("\nMENÚ PRINCIPAL");
-            System.out.println("1. Crear floristeria."); // Singleton
-            System.out.println("2. Agregar árbol."); // Factory
-            System.out.println("3. Agregar flor."); // Factory
-            System.out.println("4. Agregar decoración"); // Factory
-            System.out.println("5. Stock: Imprimir árboles, flores y decoración."); // Dependency Injection
+            System.out.println("1. Crear floristeria.");
+            System.out.println("2. Agregar árbol.");
+            System.out.println("3. Agregar flor.");
+            System.out.println("4. Agregar decoración");
+            System.out.println("5. Stock: Imprimir árboles, flores y decoración.");
             System.out.println("6. Retirar árbol.");
             System.out.println("7. Retirar flor.");
             System.out.println("8. Retirar decoración.");
             System.out.println("9. Imprimir stock con cantidades.");
-            System.out.println("10. Imprimir valor total floristeria."); // Dependency Injection
-            System.out.println("11. Crear tickets de compra con múltiples objetos."); // Patron Command
+            System.out.println("10. Imprimir valor total floristeria.");
+            System.out.println("11. Crear tickets de compra con múltiples objetos.");
             System.out.println("12. Mostrar lista de compras antiguas.");
-            System.out.println("13. Visualizar el total de dinero ganado con todas las ventas."); // Patron Observer
+            System.out.println("13. Visualizar el total de dinero ganado con todas las ventas.");
             System.out.println("0. Salir de la aplicación.\n");
             opcion = sc.nextByte();
             sc.nextLine();

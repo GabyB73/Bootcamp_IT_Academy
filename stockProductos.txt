@@ -1,8 +1,18 @@
-0	arbol	10.0€	2.0
+Arbol:
+Id	Nombre	Precio	Altura
+0	arbol	1.0€	2.0
 1	arbol1	2.0€	1.0
-2	rosa	4.0€	false
-3	arco	40.0€	true
-4	arco1	25.0€	false
-5	arco2	20.0€	false
-6	arco3	50.0€	true
-7	arco4	15.0€	false
+2	arbol2	3.0€	2.0
+3	arbol3	2.0€	4.0
+4	arbol4	45.0€	4.0
+11	arbol5	385.0€	20.0
+Flor:
+Id	Nombre	Precio	Color
+5	flor	2.0€	rojo
+6	flor1	5.0€	rojo
+10	flor2	5.0€	verde
+Decoracion:
+Id	Nombre	Precio	EsMadera?
+7	deco	2.0€	true
+8	deco1	4.0€	false
+9	deco2	5.0€	true

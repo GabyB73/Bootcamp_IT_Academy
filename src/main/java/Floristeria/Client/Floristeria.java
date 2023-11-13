@@ -8,7 +8,6 @@ import java.util.List;
 public class Floristeria {
     private static Floristeria instance;
     private String nombre;
-
     private static List<Producto> stockProductos = new ArrayList<>();
     private static List<Ticket> tickets = new ArrayList<>();
     private int id = 0;
@@ -16,6 +15,7 @@ public class Floristeria {
 
     // Evitar instanciación
     private Floristeria() {
+
     }
 
     public static Floristeria getInstance() {
