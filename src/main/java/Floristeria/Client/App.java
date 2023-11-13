@@ -296,7 +296,6 @@ public class App {
         }
     }
 
-
     private void mostrarListaComprasAntiguas() {
         if (Floristeria.getInstance().getTickets().isEmpty()) {
             System.out.println("No hay compras antiguas");
@@ -323,15 +322,15 @@ public class App {
                 case 2 -> anadirFlorTicket(ticket);
                 case 3 -> anadirDecoTicket(ticket);
             }
-            if ((ticket.getProductos().size() + 1) == i) {
+            if ((ticket.getProductos().size()) == i) {
                 i++;
             }
-            Floristeria.getInstance().getTickets().add(ticket);
             System.out.println("¿Quieres añadir otro producto?\n1. Sí\n2. No");
             if (sc.nextByte() == 2) {
                 salir = true;
             }
         }
+        Floristeria.getInstance().getTickets().add(ticket);
         return ticket;
     }
 
@@ -374,8 +373,8 @@ public class App {
                 );
     }
 
-    private void crearFloristeria() {
 
+    private void crearFloristeria() {
         Floristeria floristeria = Floristeria.getInstance();
 
         if (floristeria.getNombre() == null) {

@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ticket {
-
-    private int id = 0;
-    private int nextId = 1;
+    private int id;
+    private static int nextId = 0;
     private double total;
     List<Producto> productos;
 
     public Ticket() {
-        this.id = nextId++;
+        id = nextId;
+        nextId++;
         this.total = 0;
         this.productos = new ArrayList<>();
     }
