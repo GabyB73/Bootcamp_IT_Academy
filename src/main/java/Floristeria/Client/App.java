@@ -2,13 +2,8 @@ package Floristeria.Client;
 
 import Floristeria.DB.EscribirArchivo;
 import Floristeria.DB.LeerArchivo;
-import Floristeria.Factory.ArbolFactory;
-import Floristeria.Factory.DecoracionFactory;
-import Floristeria.Factory.FlorFactory;
-import Floristeria.Products.Arbol;
-import Floristeria.Products.Decoracion;
-import Floristeria.Products.Flor;
-import Floristeria.Products.Producto;
+import Floristeria.Factory.*;
+import Floristeria.Products.*;
 
 import java.util.List;
 import java.util.Scanner;
@@ -22,7 +17,6 @@ public class App {
 
 
     public App() {
-        System.out.println("Bienvenido a la floristería " + floristeria.getNombre());
     }
 
     public void start() {
@@ -63,7 +57,6 @@ public class App {
 
     public void agregarArbol(List<Producto> stockProductos) {
         ArbolFactory arbolFactory = new ArbolFactory();
-        // Solicita al usuario los datos del arbol (nombre, precio, altura)
         System.out.println("Ingrese el nombre del arbol:");
         String nombreArbol = sc.nextLine();
         System.out.println("Ingrese el precio del arbol:");
@@ -73,14 +66,12 @@ public class App {
         double alturaArbol = sc.nextDouble();
         sc.nextLine();
 
-        // Crea un nuevo objeto arbol con los valores ingresados
         stockProductos.add(arbolFactory.crearArbol(nombreArbol, precioArbol, alturaArbol));
         System.out.println("Árbol " + nombreArbol + " agregado correctamente al stock");
     }
 
     public void agregarFlor(List<Producto> stockProductos) {
         FlorFactory florFactory = new FlorFactory();
-        // Solicita al usuario los datos de la flor (nombre, precio, color)
         System.out.println("Ingrese el nombre de la flor:");
         String nombreFlor = sc.nextLine();
         System.out.println("Ingrese el precio de la flor:");
@@ -89,23 +80,21 @@ public class App {
         System.out.println("Ingrese el color de la flor:");
         String colorFlor = sc.nextLine();
 
-
         stockProductos.add(florFactory.crearFlor(nombreFlor, precioFlor, colorFlor));
         System.out.println("Flor " + nombreFlor + " agregada correctamente al stock");
     }
 
     public void agregarDecoracion(List<Producto> stockProductos) {
         DecoracionFactory decoracionFactory = new DecoracionFactory();
-        // Solicita al usuario los datos de la decoración (nombre, precio, material)
         System.out.println("Ingrese el nombre de la decoracion:");
         String nombreDecoracion = sc.nextLine();
         System.out.println("Ingrese el precio de la decoracion:");
         double precioDecoracion = sc.nextDouble();
-        sc.nextLine(); // Consumir la nueva línea restante
+        sc.nextLine();
         System.out.println("Ingrese el material de la decoracion (wood/plastic):");
-        String material = sc.nextLine().toLowerCase(); // Lee el material como una cadena y convierte a minúsculas
+        String material = sc.nextLine().toLowerCase();
 
-        boolean materialIsWood = material.equals("wood"); // Verifica si es "wood" para establecer el valor booleano
+        boolean materialIsWood = material.equals("wood");
 
         stockProductos.add(decoracionFactory.crearDecoracion(nombreDecoracion, precioDecoracion, materialIsWood));
         System.out.println("Decoracion " + nombreDecoracion + " agregada correctamente al stock");
@@ -189,7 +178,6 @@ public class App {
         }
     }
 
-    // Método para imprimir los productos
     public void imprimirStock() {
         System.out.println("Productos en la floristería:");
         imprimirArbol();
@@ -259,7 +247,6 @@ public class App {
         }
     }
 
-    // Método para imprimir el stock con cantidades
     public void imprimirStockConCantidades() {
         int countArboles = 0;
         int countFlores = 0;
@@ -281,7 +268,6 @@ public class App {
                 "Cantidad de Decoraciones en stock: " + countDecoraciones);
     }
 
-    // Método para calcular el valor total de la Floristería
     public void imprimirValorTotalFloristeria() {
         double valorStock = floristeria.getProductos().stream().mapToDouble(Producto::getPrecio).sum();
         System.out.println("Valor total de la floristería: " + valorStock + " euros");
@@ -292,7 +278,7 @@ public class App {
         if (floristeria.getTickets().isEmpty()) {
             System.out.println("No se han hecho ventas");
         } else {
-            for (int i = 0; i <= floristeria.getTickets().size(); i++) {
+            for (int i = 0; i < floristeria.getTickets().size(); i++) {
                 suma += floristeria.getTickets().get(i).getTotal();
             }
             System.out.println("El total de dinero ganado con todas las ventas es:\n + " + suma + "€");
@@ -396,21 +382,14 @@ public class App {
         final byte MAXIMO = 13;
 
         do {
-            System.out.println("\nMENÚ PRINCIPAL");
-            System.out.println("1. Crear floristeria.");
-            System.out.println("2. Agregar árbol.");
-            System.out.println("3. Agregar flor.");
-            System.out.println("4. Agregar decoración");
-            System.out.println("5. Stock: Imprimir árboles, flores y decoración.");
-            System.out.println("6. Retirar árbol.");
-            System.out.println("7. Retirar flor.");
-            System.out.println("8. Retirar decoración.");
-            System.out.println("9. Imprimir stock con cantidades.");
-            System.out.println("10. Imprimir valor total floristeria.");
-            System.out.println("11. Crear tickets de compra con múltiples objetos.");
-            System.out.println("12. Mostrar lista de compras antiguas.");
-            System.out.println("13. Visualizar el total de dinero ganado con todas las ventas.");
-            System.out.println("0. Salir de la aplicación.\n");
+            System.out.println("MENÚ PRINCIPAL\n" +
+                    "1.Crear floristeria.                 8.Retirar decoración.\n"
+                    + "2.Agregar árbol.                     9.Imprimir stock con cantidades.\n"
+                    + "3.Agregar flor.                      10.Imprimir valor total floristeria.\n"
+                    + "4.Agregar decoración.                11.Crear ticket de compra.\n"
+                    + "5.Stock: Imprimir.                   12.Mostrar lista de compras antiguas.\n"
+                    + "6.Retirar árbol.                     13.Ver total dinero ganado.\n"
+                    + "7.Retirar flor.                      0.Salir de la aplicación.\n");
             opcion = sc.nextByte();
             sc.nextLine();
             if (opcion < MINIMO || opcion > MAXIMO) {

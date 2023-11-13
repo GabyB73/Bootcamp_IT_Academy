@@ -1,38 +1,30 @@
 package Floristeria.DB;
 
-import Floristeria.Client.Floristeria;
-import Floristeria.Products.Arbol;
-import Floristeria.Products.Decoracion;
-import Floristeria.Products.Flor;
-
-import javax.swing.*;
-import java.io.*;
-import java.util.List;
-import java.util.Scanner;
-
 public class Archivo {
-    static Scanner sc = new Scanner(System.in);
-    static String ruta = escogerRuta();
+    static String rutaStock = "stockProductos.txt";
+    static String rutaTickets = "tickets.txt";
 
-    public static String escogerRuta() {
-        /*System.out.println("Escoja un nombre para el archivo");
-        String nombreArchivo = sc.nextLine();
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File("."));
-        fileChooser.setDialogTitle("Escoge la ruta del archivo");
-        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        fileChooser.setAcceptAllFileFilterUsed(false);
-        String ruta;
-        int respuesta = fileChooser.showOpenDialog(fileChooser);
-        if (respuesta == JFileChooser.APPROVE_OPTION) {
-            File archivoElegido = new File(fileChooser.getSelectedFile().getAbsolutePath());
-            ruta = archivoElegido.getAbsolutePath() + nombreArchivo;
-        } else {
-            System.out.println("No se ha seleccionado ningún archivo");
-            ruta = "";
-        }*/
-        ruta = "stockProductos.txt";
-        return ruta;
+    public static String getRutaStock() {
+        return rutaStock;
+    }
+
+    public static void setRutaStock(String rutaStock) {
+        Archivo.rutaStock = rutaStock;
+    }
+
+    public static String getRutaTickets() {
+        return rutaTickets;
+    }
+
+    public static void setRutaTickets(String rutaTickets) {
+        Archivo.rutaTickets = rutaTickets;
+    }
+
+    public static String getRuta() {
+        return rutaStock;
+    }
+    public void setRuta(String ruta) {
+        this.rutaStock = ruta;
     }
 
 }

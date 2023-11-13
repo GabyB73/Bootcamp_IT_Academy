@@ -1,5 +1,6 @@
 package Floristeria.DB;
 
+import Floristeria.Client.Ticket;
 import Floristeria.Factory.ArbolFactory;
 import Floristeria.Factory.DecoracionFactory;
 import Floristeria.Factory.FlorFactory;
@@ -15,7 +16,10 @@ import java.util.regex.Pattern;
 
 public class LeerArchivo implements Conexion {
     static List<Producto> stockProductoLeido = new ArrayList<>();
-    static File stockProductos = new File(Archivo.ruta);
+    static List<Ticket> ticketLeidos = new ArrayList<>();
+    static File stockProductos = new File(Archivo.getRuta());
+    static File registroTickets = new File(Archivo.getRutaTickets());
+
     static Map<String, Integer> mapaProductos = new HashMap<>();
 
     @Override
@@ -40,10 +44,6 @@ public class LeerArchivo implements Conexion {
             ioe.printStackTrace();
         }
         return stockProductoLeido;
-    }
-
-    public static Map<String, Integer> getMapaProductos() {
-        return mapaProductos;
     }
 
     private void checkEntrada(String linea) {
@@ -77,6 +77,41 @@ public class LeerArchivo implements Conexion {
                     }
                 }
             }
+        }
+    }
+
+    public List<Ticket> lectorTickets(){
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(registroTickets));
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+                checkEntrada(linea);
+            }
+            br.close();
+        } catch (IOException ioe) {
+            //noinspection CallToPrintStackTrace
+            ioe.printStackTrace();
+        }
+        return ticketLeidos;
+    }
+
+    private void checkTickets(String linea) {
+        ArbolFactory aF = new ArbolFactory();
+        FlorFactory fF = new FlorFactory();
+        DecoracionFactory dF = new DecoracionFactory();
+        //pendiente
+        String patron = "";
+        Pattern pattern = Pattern.compile(patron);
+
+        Matcher match = pattern.matcher(linea);
+
+        if (match.find()) {
+            int id = Integer.parseInt(match.group(1));
+            String nombre = match.group(2);
+            double precio = Double.parseDouble(match.group(3));
+            String tipoS = match.group(4);
+
         }
     }
 }

@@ -12,13 +12,13 @@ import java.io.IOException;
 import java.util.List;
 
 public class EscribirArchivo implements Conexion {
-
     private static File stockProductos;
+    private static File registroTickets;
 
     @Override
     public void conectar() {
         try {
-            stockProductos = new File(Archivo.ruta);
+            stockProductos = new File(Archivo.getRuta());
             if (stockProductos.createNewFile()) {
                 System.out.println("BBDD .txt creada: " + stockProductos.getName());
             } else {
@@ -35,10 +35,6 @@ public class EscribirArchivo implements Conexion {
             guardarArbol(stock, bw);
             guardarFlor(stock, bw);
             guardarDecoracion(stock, bw);
-
-            /*for (Producto p : stock) {
-                bw.write(p.toString());
-            }*/
             bw.close();
         } catch (IOException ioe) {
             ioe.printStackTrace();
