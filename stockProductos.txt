@@ -3,7 +3,7 @@ Id	Nombre	Precio	Altura
 0	arbol	1.0€	2.0
 Flor:
 Id	Nombre	Precio	Color
-6	flor	2.0€	rojo
+1	flor	2.0€	rojo
 Decoracion:
 Id	Nombre	Precio	EsMadera?
-9	deco	2.0€	true
+2	deco	2.0€	true

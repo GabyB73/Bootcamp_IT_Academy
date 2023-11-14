@@ -1,5 +1,6 @@
 package Floristeria.DB;
 
+import Floristeria.Client.Ticket;
 import Floristeria.Products.Arbol;
 import Floristeria.Products.Decoracion;
 import Floristeria.Products.Flor;
@@ -13,7 +14,6 @@ import java.util.List;
 
 public class EscribirArchivo implements Conexion {
     private static File stockProductos;
-    private static File registroTickets;
 
     @Override
     public void conectar() {
@@ -39,13 +39,12 @@ public class EscribirArchivo implements Conexion {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
-
     }
 
     private void guardarArbol(List<Producto> stock, BufferedWriter bw) throws IOException {
         bw.write("Arbol:\nId\tNombre\tPrecio\tAltura\n");
-        for (Producto p : stock){
-            if (p instanceof Arbol){
+        for (Producto p : stock) {
+            if (p instanceof Arbol) {
                 bw.write(p.toString());
             }
         }
@@ -53,8 +52,8 @@ public class EscribirArchivo implements Conexion {
 
     private void guardarFlor(List<Producto> stock, BufferedWriter bw) throws IOException {
         bw.write("Flor:\nId\tNombre\tPrecio\tColor\n");
-        for (Producto p : stock){
-            if (p instanceof Flor){
+        for (Producto p : stock) {
+            if (p instanceof Flor) {
                 bw.write(p.toString());
             }
         }
@@ -62,8 +61,8 @@ public class EscribirArchivo implements Conexion {
 
     private void guardarDecoracion(List<Producto> stock, BufferedWriter bw) throws IOException {
         bw.write("Decoracion:\nId\tNombre\tPrecio\tEsMadera?\n");
-        for (Producto p : stock){
-            if (p instanceof Decoracion){
+        for (Producto p : stock) {
+            if (p instanceof Decoracion) {
                 bw.write(p.toString());
             }
         }
