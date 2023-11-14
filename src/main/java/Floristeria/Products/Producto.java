@@ -16,15 +16,12 @@ public abstract class Producto{
         id = nextId;
         nextId++;
     }
-
     public String getNombre() {
         return nombre;
     }
-
     public double getPrecio() {
         return precio;
     }
-
     public int getId() {
         return id;
     }

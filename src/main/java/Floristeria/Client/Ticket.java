@@ -23,7 +23,7 @@ public class Ticket {
     }
 
     public double getTotal() {
-        total += productos.stream().mapToDouble(Producto::getPrecio).sum();
+        total = productos.stream().mapToDouble(Producto::getPrecio).sum();
         return total;
     }
 
