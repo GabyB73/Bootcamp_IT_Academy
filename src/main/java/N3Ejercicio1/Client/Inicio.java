@@ -10,6 +10,14 @@ public class Inicio {
     Barco barco         = new Barco();
     Invoker invoker     = new Invoker();
 
+    public Inicio(Coche coche, Bicicleta bicicleta, Avion avion, Barco barco) {
+        this.coche      = coche;
+        this.bicicleta  = bicicleta;
+        this.avion      = avion;
+        this.barco      = barco;
+
+    }
+
     public void configurarCoche() {
         System.out.println("Arrancando el coche");
         invoker.setArrancarCommand(coche);
