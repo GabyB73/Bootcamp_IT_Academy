@@ -7,13 +7,14 @@ public class App {
 
     public static void main(String[] args) {
 
-        Coche coche         = null;
-        Avion avion         = null;
-        Bicicleta bicicleta = null;
-        Barco barco         = null;
+        Coche coche         = new Coche();  // Inicialización de instancias
+        Avion avion         = new Avion();
+        Bicicleta bicicleta = new Bicicleta();
+        Barco barco         = new Barco();
 
-        Inicio inicio   = new Inicio(coche, bicicleta, avion, barco);
         Invoker invoker = new Invoker();
+
+        Inicio inicio   = new Inicio(coche, bicicleta, avion, barco, invoker);
 
         inicio.configurarCoche();
         inicio.ejecutarAcciones();

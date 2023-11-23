@@ -4,17 +4,22 @@ import N3Ejercicio1.Command.*;
 
 public class Inicio {
 
-    Coche coche         = new Coche();
-    Bicicleta bicicleta = new Bicicleta();
-    Avion avion         = new Avion();
-    Barco barco         = new Barco();
-    Invoker invoker     = new Invoker();
+    Coche coche;
+    Bicicleta bicicleta;
+    Avion avion;
+    Barco barco;
+    Invoker invoker;
 
-    public Inicio(Coche coche, Bicicleta bicicleta, Avion avion, Barco barco) {
+    public Inicio() {
+
+    }
+
+    public Inicio(Coche coche, Bicicleta bicicleta, Avion avion, Barco barco, Invoker invoker) {
         this.coche      = coche;
         this.bicicleta  = bicicleta;
         this.avion      = avion;
         this.barco      = barco;
+        this.invoker    = invoker;
 
     }
 
