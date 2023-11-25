@@ -13,14 +13,17 @@ public class Invoker {
     }
 
     public void setArrancarCommand(Command command) {
+
         arrancarCommand = command;
     }
 
     public void setAcelerarCommand(Command command) {
+
         acelerarCommand = command;
     }
 
     public void setFrenarCommand(Command command) {
+
         frenarCommand = command;
     }
 

@@ -4,11 +4,11 @@ import N3Ejercicio1.Command.*;
 
 public class Inicio {
 
-    Coche coche;
-    Bicicleta bicicleta;
-    Avion avion;
-    Barco barco;
-    Invoker invoker;
+    private Coche coche;
+    private Bicicleta bicicleta;
+    private Avion avion;
+    private Barco barco;
+    private Invoker invoker;
 
     public Inicio() {
 
