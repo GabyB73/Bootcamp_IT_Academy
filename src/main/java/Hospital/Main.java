@@ -108,7 +108,7 @@ public class Main {
             System.out.println("2.Asignar una cita a un paciente");
             System.out.println("3.Anular una cita");
             System.out.println("4.Consultar una cita de un paciente");
-            System.out.println("4.Consultar una cita de un médico");
+            System.out.println("5.Consultar una cita de un médico");
 
 
             opcion = sc.nextByte();
