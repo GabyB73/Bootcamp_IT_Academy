@@ -1,5 +1,8 @@
 package Hospital;
 
+import exceptions.ExcepcionCitaDuplicada;
+import exceptions.ExcepcionCitaNoEncontrada;
+
 import java.util.ArrayList;
 
 public class Hospital {
