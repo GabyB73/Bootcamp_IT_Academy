@@ -40,12 +40,6 @@ public class User implements UserDetails {
     @NotBlank(message = "La contraseña no puede estar vacía")
     private String password;
 
-    @Schema(description = "Correo electrónico del usuario")
-    @Column(nullable = false, unique = true)
-    @NotBlank(message = "El email no puede estar vacío")
-    @Email(message = "Debe ser un email válido")
-    private String email;
-
     @Enumerated(EnumType.STRING)
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
