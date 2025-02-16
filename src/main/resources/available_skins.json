@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Skin1",
+    "type": "Type1",
+    "price": 10.0,
+    "color": "Red"
+  },
+  {
+    "name": "Skin2",
+    "type": "Type2",
+    "price": 15.0,
+    "color": "Blue"
+  },
+  {
+    "name": "Skin3",
+    "type": "Type3",
+    "price": 12.0,
+    "color": "Black"
+  },
+  {
+    "name": "Skin4",
+    "type": "Type4",
+    "price": 20.0,
+    "color": "White"
+  },
+  {
+    "name": "Skin5",
+    "type": "Type5",
+    "price": 25.0,
+    "color": "Green"
+  }
+]

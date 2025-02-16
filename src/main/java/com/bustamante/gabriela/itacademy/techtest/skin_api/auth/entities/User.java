@@ -1,5 +1,6 @@
 package com.bustamante.gabriela.itacademy.techtest.skin_api.auth.entities;
 
+import com.bustamante.gabriela.itacademy.techtest.skin_api.model.entities.Skin;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -48,6 +49,10 @@ public class User implements UserDetails {
     )
     @Column(name = "role")
     private Set<Role> roles;
+
+    @OneToMany(mappedBy = "user")
+    private List<Skin> skins;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream()
