@@ -7,36 +7,43 @@ public class Butaca {
     private String nombrePersona;
 
     public Butaca(int numeroFila, int numeroAsiento, String nombrePersona) {
-        this.numeroFila     = numeroFila;
-        this.numeroAsiento  = numeroAsiento;
-        this.nombrePersona  = nombrePersona;
+        this.numeroFila = numeroFila;
+        this.numeroAsiento = numeroAsiento;
+        this.nombrePersona = nombrePersona;
 
 
     }
+
     public int getNumeroFila() {
 
         return numeroFila;
     }
+
     public void setNumeroFila(int numeroFila) {
 
         this.numeroFila = numeroFila;
     }
+
     public int getNumeroAsiento() {
 
         return numeroAsiento;
     }
+
     public void setNumeroAsiento(int numeroAsiento) {
 
         this.numeroAsiento = numeroAsiento;
     }
+
     public String getNombrePersona() {
 
         return nombrePersona;
     }
+
     public void setNombrePersona(String nombrePersona) {
 
         this.nombrePersona = nombrePersona;
     }
+
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;

@@ -1,4 +1,5 @@
 package N3Ejercicio1;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -14,12 +15,13 @@ public class Cine {
 
     //Constructor de la clase Cine
     public Cine() {
-            gestionButaca = new GestionButaca();
-            butacas = new ArrayList<Butaca>();
+        gestionButaca = new GestionButaca();
+        butacas = new ArrayList<Butaca>();
 
         pedirDatosIniciales();
 
-        }
+    }
+
     String nombre;
 
     public void iniciar() {
@@ -86,6 +88,7 @@ public class Cine {
         numAsientosPorFila = sc.nextInt();
 
     }
+
     public static void reservarButaca(ArrayList<Butaca> butacas, Cine cine) {
         int numFila = cine.introducirFila();
 
@@ -103,6 +106,7 @@ public class Cine {
                     " en la fila " + numFila);
         }
     }
+
     public static void mostrarButacasReservadas(ArrayList<Butaca> butacas) {
         if (butacas.isEmpty()) {
             System.out.println("Todas las butacas están libres.");
@@ -115,6 +119,7 @@ public class Cine {
             }
         }
     }
+
     public static void mostrarButacasPersona(ArrayList<Butaca> butacas, String nombre) {
         boolean hayButacasReservadas = !butacas.isEmpty();
         boolean encontrado = false;
@@ -139,6 +144,7 @@ public class Cine {
             }
         }
     }
+
     public static void anularReserva(ArrayList<Butaca> butacas, Cine cine) {
         int numFila = cine.introducirFila();
         //sc.nextLine();
@@ -149,11 +155,12 @@ public class Cine {
 
         if (butacaReservada != null) {
             butacas.remove(butacaReservada);
-            System.out.println("Reserva anulada para la butaca " + numAsiento+ " de la fila " + numFila );
+            System.out.println("Reserva anulada para la butaca " + numAsiento + " de la fila " + numFila);
         } else {
             System.out.println("La butaca no está reservada o no existe.");
         }
     }
+
     public static void anularReservaPersona(ArrayList<Butaca> butacas, Cine cine) {
         String nombrePersona = cine.introducirPersona();
 
@@ -179,7 +186,7 @@ public class Cine {
     }
 
 
-    public static void mostrarButaca(ArrayList<Butaca>butacas, int numFila, int numAsiento){
+    public static void mostrarButaca(ArrayList<Butaca> butacas, int numFila, int numAsiento) {
 
         Butaca butaca = buscarButaca(butacas, numFila, numAsiento);
 
@@ -189,6 +196,7 @@ public class Cine {
             System.out.println("La butaca " + butaca + " " + "no está en la aplicación");
         }
     }
+
     public static Butaca buscarButaca(ArrayList<Butaca> butacas, int numFila, int numAsiento) {
 
         Butaca butaca = null;
@@ -205,12 +213,14 @@ public class Cine {
 
     // Clase ExcepcionNomPersonaIncorrecto (Excepción personalizada)
     public class ExcepcionNomPersonaIncorrecto extends Exception {
-       public ExcepcionNomPersonaIncorrecto() {
+        public ExcepcionNomPersonaIncorrecto() {
         }
+
         public ExcepcionNomPersonaIncorrecto(String message) {
             super(message);
         }
     }
+
     public String introducirPersona() {
 
         while (true) {
@@ -226,19 +236,21 @@ public class Cine {
                 return nombre;
             } catch (ExcepcionNomPersonaIncorrecto e) {
                 System.out.println("Error: El nombre contiene números. Introduce un nombre válido.");
-            }finally {
+            } finally {
 
             }
         }
     }
 
-        public class ExcepcionFilaIncorrecta extends Exception {
-            public ExcepcionFilaIncorrecta() {
-            }
-            public ExcepcionFilaIncorrecta(String message) {
-                super(message);
-            }
+    public class ExcepcionFilaIncorrecta extends Exception {
+        public ExcepcionFilaIncorrecta() {
         }
+
+        public ExcepcionFilaIncorrecta(String message) {
+            super(message);
+        }
+    }
+
     public int introducirFila() {
         int numFila = 0;
         boolean filaValida = false;
@@ -262,38 +274,40 @@ public class Cine {
 
         return numFila;
     }
-            public class ExcepcionAsientoIncorrecto extends Exception {
-                public ExcepcionAsientoIncorrecto() {
-                }
-                public ExcepcionAsientoIncorrecto(String message) {
-                    super(message);
-                }
-            }
-            public int introducirAsiento() {
-                int numAsiento = 0;
-                boolean asientoValido = false;
 
-                while (!asientoValido) {
-                    try {
-                        System.out.println("Introduce el número de asiento:");
-                        numAsiento = sc.nextInt();
+    public class ExcepcionAsientoIncorrecto extends Exception {
+        public ExcepcionAsientoIncorrecto() {
+        }
 
-                        if (numAsiento >= 1 && numAsiento <= numAsientosPorFila) {
-                            asientoValido = true;
-                        } else {
-                            throw new ExcepcionAsientoIncorrecto();
-                        }
-                    } catch (ExcepcionAsientoIncorrecto e) {
-                        System.out.println("Error: El número de asiento es incorrecto.");
-
-                    }finally {
-                        // Limpia el búfer de entrada antes de intentar nuevamente
-                        sc.nextLine();
-                    }
-                }
-                return numAsiento;
+        public ExcepcionAsientoIncorrecto(String message) {
+            super(message);
+        }
     }
 
+    public int introducirAsiento() {
+        int numAsiento = 0;
+        boolean asientoValido = false;
+
+        while (!asientoValido) {
+            try {
+                System.out.println("Introduce el número de asiento:");
+                numAsiento = sc.nextInt();
+
+                if (numAsiento >= 1 && numAsiento <= numAsientosPorFila) {
+                    asientoValido = true;
+                } else {
+                    throw new ExcepcionAsientoIncorrecto();
+                }
+            } catch (ExcepcionAsientoIncorrecto e) {
+                System.out.println("Error: El número de asiento es incorrecto.");
+
+            } finally {
+                // Limpia el búfer de entrada antes de intentar nuevamente
+                sc.nextLine();
+            }
+        }
+        return numAsiento;
+    }
 
 
 }

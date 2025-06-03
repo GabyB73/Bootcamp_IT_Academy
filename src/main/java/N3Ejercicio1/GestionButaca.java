@@ -6,14 +6,17 @@ import java.util.Scanner;
 public class GestionButaca {
     static Scanner sc = new Scanner(System.in);
     private ArrayList<Butaca> sillones;
+
     public GestionButaca() {
 
         sillones = new ArrayList<Butaca>();
     }
+
     public ArrayList<Butaca> getButacas() {
 
         return sillones;
     }
+
     //Método para excepción personalizada
     public class ExcepcionButacaOcupada extends Exception {
         public ExcepcionButacaOcupada() {
@@ -24,6 +27,7 @@ public class GestionButaca {
             super(message);
         }
     }
+
     public void añadirButaca(Butaca butaca) {
         try {
             if (!sillones.isEmpty()) {
@@ -51,6 +55,7 @@ public class GestionButaca {
             super(message);
         }
     }
+
     public void eliminarButaca(Butaca butaca) {
         try {
             if (!sillones.isEmpty()) {
@@ -70,19 +75,19 @@ public class GestionButaca {
     }
 
     public static int buscarButaca(ArrayList<Butaca> sillones, int numFila, int numAsiento) {
-            int posicion = -1;
+        int posicion = -1;
 
-            for (int i = 0; i < sillones.size(); i++) {
-                Butaca butaca = sillones.get(i);
+        for (int i = 0; i < sillones.size(); i++) {
+            Butaca butaca = sillones.get(i);
 
-                if (butaca.getNumeroFila() == numFila && butaca.getNumeroAsiento() == numAsiento) {
-                    posicion = i;
+            if (butaca.getNumeroFila() == numFila && butaca.getNumeroAsiento() == numAsiento) {
+                posicion = i;
 
-                }
             }
-
-            return posicion;
         }
+
+        return posicion;
+    }
 
 
 
