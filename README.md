@@ -1,4 +1,4 @@
-# 🚨 Sprint 1 - Tasca 7 : ava Annotations - Nivel 1/2/3
+# 🚨 Sprint 1 - Tasca 7 : Java Annotations - Nivel 1/2/3
 
 ---
 
@@ -108,7 +108,7 @@ Sprint1Tasca7/
 
 - Ejecutar `Principal.java` para ver el funcionamiento de la jerarquía de trabajadores y anotaciones estándar.
 - Usar `Serializador.java` y `LectorAnotaciones.java` para comprobar el funcionamiento de las anotaciones personalizadas y Reflection.
--
+  
 ---
 
 ## 🤝 Contribuciones
