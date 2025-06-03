@@ -20,7 +20,7 @@ Este proyecto tiene como objetivo aplicar el manejo de excepciones en Java para 
 ## 💻 Tecnologías Utilizadas
 
 - Java 16 (OpenJDK 16.0.2)
-- IntelliJ IDEA / Eclipse
+- IntelliJ IDEA
 - Maven
 - Git
 
