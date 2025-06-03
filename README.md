@@ -56,14 +56,14 @@ Sprint1Tasca1/
    git clone https://github.com/tu-usuario/Sprint1Tasca1.git```
 
 2. Navega al directorio del proyecto:
-```bash
-cd Sprint1Tasca1
-```
+   ```bash
+    cd Sprint1Tasca1
+   ```
 
 3. Compila e instala las dependencias con Maven:
-```bash
-mvn clean install
-```
+   ```bash
+    mvn clean install
+   ```
 
 ---
 ## ▶️ Ejecución
@@ -81,7 +81,8 @@ Las contribuciones no son necesarias, pero puedes hacer un fork o dejar comentar
 ---
 ## 👩‍💻 Autor/a
 
-Desarrollado por [Gabriela Bustamante]  
+Desarrollado por **[Gabriela Bustamante](https://github.com/GabyB73)**  
+Programadora Backend | Apasionada del software libre y el código limpio    
 Bootcamp de Desarrollo Java - IT Academy  
 
 
