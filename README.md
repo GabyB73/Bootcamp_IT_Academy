@@ -1,4 +1,4 @@
-# 🚨 Sprint 1 - Tasca 2: Exceptions - Nivell 1/2/3
+# 🚨 Sprint 1 - Tasca 2: Exceptions - Nivel 1/2/3
 
 ---
 
@@ -40,9 +40,9 @@ Este proyecto tiene como objetivo aplicar el manejo de excepciones en Java para 
 ```bash
 Sprint1Tasca2/
 │
-├── Nivell1_Ex1/       → Gestión de productos y cálculo de ventas con excepciones
-├── Nivell2_Ex1/       → Clase Entrada con validación robusta del input de usuario
-└── Nivell3_Ex1/       → Sistema de reserva de butacas en cine con control de errores
+├── N1Ejercicio1/       → Gestión de productos y cálculo de ventas con excepciones
+├── N2Ejercicio1/       → Clase Entrada con validación robusta del input de usuario
+└── N3Ejercicio1/       → Sistema de reserva de butacas en cine con control de errores
 ```
 
 ---
