@@ -7,10 +7,12 @@ public class GestionButaca {
     static Scanner sc = new Scanner(System.in);
     private ArrayList<Butaca> sillones;
     public GestionButaca() {
-                sillones = new ArrayList<Butaca>();
+
+        sillones = new ArrayList<Butaca>();
     }
     public ArrayList<Butaca> getButacas() {
-                return sillones;
+
+        return sillones;
     }
     //Método para excepción personalizada
     public class ExcepcionButacaOcupada extends Exception {

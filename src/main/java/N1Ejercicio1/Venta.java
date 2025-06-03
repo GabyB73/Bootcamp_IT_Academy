@@ -12,18 +12,22 @@ public class Venta {
     }
 
     public ArrayList<Producto> getProductos() {
+
         return productos;
     }
 
     public void setProductos(ArrayList<Producto> productos) {
+
         this.productos = productos;
     }
 
     public float getPrecioTotalVentas() {
+
         return precioTotalVentas;
     }
 
     public void setPrecioTotalVentas(float precioTotalVentas) {
+
         this.precioTotalVentas = precioTotalVentas;
     }
 
