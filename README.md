@@ -90,7 +90,7 @@ Desde la terminal, en el directorio del proyecto, se pueden ejecutar:
 ## 🛠️ Instalación
 
 1. Clona el repositorio:  
-   `git clone https://github.com/tu-usuario/Sprint4Tasca1Nivel1.git`
+   `git clone https://github.com/GabyB73/Sprint4Tasca1Nivel1.git`
 2. Abre el proyecto en IntelliJ o Eclipse.
 3. Asegúrate de que el archivo `pom.xml` está presente y actualizado.
 
