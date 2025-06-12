@@ -109,7 +109,7 @@ Sprint1Tasca5/
 ## 🛠️ Instalación
 
 1. Clona el repositorio:
-   `git clone https://github.com/tu-usuario/Sprint1Tasca5.git`
+   `git clone https://github.com/GabyB73/Sprint1Tasca5.git`
 
 2. Abre el proyecto en IntelliJ o Eclipse.
 
