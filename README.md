@@ -87,7 +87,7 @@ MySQL-Queries/
 ## 🛠️ Instalación
 
 1. Clona el repositorio:  
-    `git clone https://github.com/tu-usuario/MySQL-Queries.git`
+    `git clone https://github.com/GabyB73/MySQL-Queries.git`
 2. Abre MySQL Workbench
 3. Para la base de datos **Tienda**:
    - Abre el archivo `schema_tienda.sql` (ubicado en la carpeta `schema_tienda/`).
