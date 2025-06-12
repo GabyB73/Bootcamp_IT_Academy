@@ -78,7 +78,7 @@ MongoDB_Queries/
 ## 🛠️ Instalación
 
 1. Clona el repositorio:  
-    `git clone https://github.com/tu-usuario/MongoDB-Queries.git`
+    `git clone https://github.com/GabyB73/MongoDB-Queries.git`
 2. Inicia el servidor MongoDB:
 ```bash
 mongod
