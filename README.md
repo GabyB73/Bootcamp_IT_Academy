@@ -66,7 +66,7 @@ MongoDB-Estructura/
 ## 🛠️ Instalación
 
 1. Clona el repositorio:  
-    `git clone https://github.com/tu-usuario/Sprint2Tasca3.git`
+    `git clone https://github.com/GabyB73/MongoDB-Estructura.git`
 2. Asegúrate de tener instalado:
    - [MongoDB Server](https://www.mongodb.com/try/download/community) (v7.0.2 o compatible)
    - [MongoDB Compass](https://www.mongodb.com/try/download/compass) (v1.42.0 o compatible)
