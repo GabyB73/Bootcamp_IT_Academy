@@ -79,10 +79,9 @@ Este es un proyecto de práctica del bootcamp IT Academy.
 Las contribuciones no son necesarias, pero puedes hacer un fork o dejar comentarios si lo deseas.
 
 ---
-## 👩‍💻 Autor/a
+## 👩‍💻 Autora
 
 Desarrollado por **[Gabriela Bustamante](https://github.com/GabyB73)**  
-Programadora Backend | Apasionada del software libre y el código limpio    
 Bootcamp de Desarrollo Java - IT Academy  
 
 
