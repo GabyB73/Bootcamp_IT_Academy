@@ -101,7 +101,7 @@ MySQL-Estructura/
 ## 🛠️ Instalación
 
 1. Clona el repositorio:  
-    `git clone https://github.com/tu-usuario/Sprint2Tasca1.git`
+    `git clone https://github.com/GabyB73/MySQL-Estructura.git`
 2. Abre el proyecto en MySQL Workbench
 3. Selecciona **File > Open Model...** y abre cualquiera de los archivos `.mwb`.
 
