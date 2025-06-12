@@ -53,7 +53,7 @@ Sprint1Tasca1/
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/Sprint1Tasca1.git```
+   git clone https://github.com/GabyB73/Sprint1Tasca1.git```
 
 2. Navega al directorio del proyecto:
    ```bash
