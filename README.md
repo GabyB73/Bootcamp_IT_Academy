@@ -110,7 +110,7 @@ resources/
 
 1. Clona el repositorio:
 
-   `git clone https://github.com/tu-usuario/Sprint1Tasca3.git`
+   `git clone https://github.com/GabyB73/Sprint1Tasca3.git`
 
 2. Abre el proyecto en IntelliJ o Eclipse.
 
