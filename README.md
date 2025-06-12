@@ -82,7 +82,7 @@ Group_Project/
 ## 🛠️ Instalación
 
 1. Clona el repositorio:  
-    `git clone https://github.com/tu-usuario/Group_Project.git`
+    `git clone https://github.com/GabyB73/Group_Project.git`
 2. Abre el proyecto en IntelliJ o Eclipse.
 3. El proyecto está configurado con Gradle Wrapper. Puedes compilar o ejecutar con:
 	- `./gradlew build` (Linux/macOS)
