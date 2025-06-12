@@ -76,7 +76,7 @@ Sprint3Tasca1/
 ## 🛠️ Instalación
 
 1. Clona el repositorio:  
-   `git clone https://github.com/tu-usuario/Sprint3Tasca1.git`
+   `git clone https://github.com/GabyB73/Sprint3Tasca1.git`
 2. Abre el proyecto en IntelliJ o Eclipse.
 3. Si utilizas Maven, asegúrate de que el archivo `pom.xml` está presente y actualizado.
 
