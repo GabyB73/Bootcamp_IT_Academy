@@ -23,7 +23,7 @@ El servidor escucha en el puerto `9001` y devuelve saludos personalizados.
 
 ## 💻 Tecnologías utilizadas
 
-- **Java 19.0.2**
+- **Java 17**
 - **Spring Boot** (última versión estable)
 - **Gradle** (gestor de dependencias)
 - **IntelliJ IDEA**
@@ -33,7 +33,7 @@ El servidor escucha en el puerto `9001` y devuelve saludos personalizados.
 
 ## 📋 Requisitos
 
-- Java JDK 19.0.2 instalado
+- Java JDK 17 instalado
 - Gradle instalado y configurado en el sistema
 - IntelliJ IDEA o Eclipse
 - Postman o cualquier cliente HTTP para probar la API
