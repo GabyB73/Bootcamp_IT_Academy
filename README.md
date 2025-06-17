@@ -97,12 +97,16 @@ S04T02N01BustamanteGabriela/
 
 - ➕ **POST** `/fruta/add`  
   Crea una nueva fruta.
-- ✏️ **PUT** `/fruta/update`  
-  Actualiza una fruta existente.
+  
+- ✏️ **PUT** `/fruta/update/{id}`  
+  Actualiza una fruta existente por su ID.
+  
 - ❌ **DELETE** `/fruta/delete/{id}`  
   Elimina una fruta por su ID.
+  
 - 🔍 **GET** `/fruta/getOne/{id}`  
-  Obtiene una fruta por ID.
+  Obtiene una fruta por su ID.
+  
 - 📋 **GET** `/fruta/getAll`  
   Lista todas las frutas.
 
@@ -150,30 +154,33 @@ GET     http://localhost:8080/fruta/getAll
 ---
 ### 📸 Capturas de pantalla
 
-####➕ Añadir fruta
+#### ➕ Añadir fruta
 ![add_fruta](screenshots/add_fruta.png)
 
-####✏️ Actualizar fruta
+#### ✏️ Actualizar fruta
 ![update_fruta](screenshots/update_fruta.png)
 
-####❌ Eliminar fruta
+#### ❌ Eliminar fruta
 ![delete_fruta](screenshots/delete_fruta.png)
 
-####🔍 Obtener una fruta
+#### 🔍 Obtener una fruta
 ![get_one_fruta](screenshots/get_one_fruta.png)
 
-####📋 Obtener todas las frutas
+#### 📋 Obtener todas las frutas
 ![get_all_frutas](screenshots/get_all_frutas.png)
 
-####🧪 Consola H2
+#### 🧪 Consola H2
 ![h2_console](screenshots/h2_console.png)
 
 ---
 ## 🔗 Recursos utilizados
 
 1- [https://developer.mozilla.org/es/docs/Web/HTTP/Overview](https://developer.mozilla.org/es/docs/Web/HTTP/Overview)
+
 2- [https://www.restapitutorial.com/](https://www.restapitutorial.com/)
+
 3- [https://spring.io/blog/2015/07/14/microservices-with-spring](https://spring.io/blog/2015/07/14/microservices-with-spring)
+
 4- [https://www.bezkoder.com/spring-boot-jpa-h2-example/](https://www.bezkoder.com/spring-boot-jpa-h2-example/)
 
 ---
@@ -184,6 +191,7 @@ Este es un proyecto de práctica del bootcamp IT Academy.
 Las contribuciones no son necesarias, pero puedes hacer un fork o dejar comentarios si lo deseas.
   
 ---
+
 
 ## 👩‍💻 Autora
 
