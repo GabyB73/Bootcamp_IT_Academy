@@ -1,4 +1,5 @@
-# 🚀 Sprint 4 - Tasca 2 Nivel 1:
+# 🚀 Sprint 4 · Tasca 2 · Nivel 1: API REST con Spring Boot - CRUD con H2
+
 ---
 
 ## 📄 Descripción
