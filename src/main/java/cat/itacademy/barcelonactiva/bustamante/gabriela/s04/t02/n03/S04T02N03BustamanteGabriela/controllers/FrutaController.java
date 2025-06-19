@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/fruta")
 public class FrutaController {
     @Autowired
     private ServicioFruta servicioFruta;
@@ -36,7 +37,7 @@ public class FrutaController {
         List<Fruta> frutas = servicioFruta.getAllFruta();
         return ResponseEntity.ok(frutas);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/getOne/{id}")
     public ResponseEntity<Fruta> searchFrutaById(@PathVariable ObjectId id) {
         Optional<Fruta> frutaOptional = servicioFruta.getFrutaById(id);
 
