@@ -1,0 +1,4 @@
+
+db.createCollection( 'Cliente', {validator: {$jsonSchema: {bsonType: 'object',title:'Cliente',required: [         'nombre',          'direccion_postal',          'telefono',          'correo_electronico',          'fecha_registro',          'recomendado_por',          'vendedor'],properties: {nombre: {bsonType: 'string'},direccion_postal: {bsonType: 'string'},telefono: {bsonType: 'string'},correo_electronico: {bsonType: 'string'},fecha_registro: {bsonType: 'date'},recomendado_por: {bsonType: 'objectId'},vendedor: {bsonType: 'objectId', description:'Campo de referencia a la colección "Empleado."'}}         }      },
+autoIndexId:true
+});  
